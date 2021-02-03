@@ -1,13 +1,235 @@
-body {
+:root {
+  /* Colors */
+  --dark-blue: #03045eff;
+  --secondary-blue: #0077b6ff;
+  --primary-blue: rgb(56, 146, 194);
+  --light-blue: #90e0efff;
+  --bg-blue: #caf0f8ff;
+  --delete-color: #df372b;
+  --divider-color: rgba(0, 0, 0, 0.1);
+  /* Global */
+  --letter-spacing: 0.08rem;
+  --transition: all 0.3s linear;
+  --btn-transition: all 0.125s ease;
+  --radius: 0.25rem;
+  --btn-radius: 16px;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 4px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-blue);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* GLOBAL STYLE */
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--letter-spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  color: var(--clr-grey-5);
+  font-size: 0.9rem;
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--btn-radius);
+  box-shadow: var(--light-shadow);
+  letter-spacing: var(--letter-spacing);
+  font-size: 0.55rem;
+  transition: var(--btn-transition);
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.icon {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Project CSS */
+section {
+  width: 95%;
+  margin: auto;
+  padding: 1rem;
+  height: 100vh;
+}
+
+.container {
+  margin: auto;
+  gap: 3rem;
+  display: grid;
+  place-items: center;
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+.people-list {
+  background-color: #222;
+  border-radius: var(--radius);
+  width: 100%;
+  box-shadow: var(--dark-shadow);
+}
+
+.user-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-list li {
+  padding: 1rem;
+  width: 100%;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+article {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: start;
+  height: fit-content;
+}
+
+.person-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: var(--dark-shadow);
+}
+
+@media screen and (min-width: 992px) {
+  .person-info {
+    width: 100%;
+    height: 40px;
+    display: grid;
+  }
+}
+
+.person-info .person-action {
+  display: flex;
+  color: var(--bg-blue);
+
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.person-info .person-action button {
+  border: none;
+  padding: 0.2rem 0.425rem 0.1rem 0.425rem;
+  background-color: transparent;
+  box-shadow: unset;
+  color: var(--delete-color);
+}
+
+.person-info .person-action button:hover {
+  background-color: var(--delete-color);
+  color: white;
+  box-shadow: var(--ligth-shadow);
+}
+
+article .person-info p {
+  font-size: 0.78rem;
+  color: var(--bg-blue);
+  font-style: italic;
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-group .btn-reset {
+  background-color: var(--secondary-blue);
+  color: var(--bg-blue);
+}
+
+.btn-group .btn-reset:hover {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.btn-group .btn-delete {
+  background-color: transparent;
+  color: var(--delete-color);
+  border: 2px solid var(--delete-color);
+}
+
+.btn-group .btn-delete:hover {
+  background-color: var(--delete-color);
+  color: white;
 }
