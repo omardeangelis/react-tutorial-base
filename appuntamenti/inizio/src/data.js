@@ -26,14 +26,14 @@ const data = [
     stato:
       "La fotografia è passione e amore, è l’emozione passeggera, che arriva e subito vola via.",
     img:
-      "https://res.cloudinary.com/thomasdea/image/upload/v1612341193/react-api-course/tizio-palestra_naoqwo.jpg",
+      "https://res.cloudinary.com/thomasdea/image/upload/v1612341204/react-api-course/tipa-occhiali_svc9jp.jpg",
   },
   {
     id: 5,
     nome: "Crhistian Minerva",
     stato: "Non mangerei un hamburger nemmeno se mi pagassero 40,000 dollari",
     img:
-      "https://res.cloudinary.com/thomasdea/image/upload/v1612341193/react-api-course/tizio-palestra_naoqwo.jpg",
+      "https://res.cloudinary.com/thomasdea/image/upload/v1612341200/react-api-course/tizio_awlq7r.jpg",
   },
 ];
 
