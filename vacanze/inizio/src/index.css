@@ -5,16 +5,22 @@
   --primary-blue: rgb(56, 146, 194);
   --light-blue: #90e0efff;
   --bg-blue: #caf0f8ff;
+  --text-color: #efefef;
+  --grey-color: #d4d3d3;
   --delete-color: #df372b;
   --divider-color: rgba(0, 0, 0, 0.1);
+  --dark-bg: #222;
+  --soft-dark: #272724;
   /* Global */
   --letter-spacing: 0.08rem;
   --transition: all 0.3s linear;
   --btn-transition: all 0.125s ease;
   --radius: 0.25rem;
+  --img-radius: 0.25rem 0.25rem 0rem 0rem;
+  --card-radius: 0rem 0rem 0.25rem 0.25rem;
   --btn-radius: 16px;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --dark-shadow: 4px 5px 15px rgba(0, 0, 0, 0.4);
+  --dark-shadow: 4px 5px 15px rgba(5, 6, 6, 0.4);
 }
 
 *,
@@ -26,8 +32,8 @@
 }
 
 body {
-  background-color: var(--dark-blue);
-
+  background-color: var(--dark-bg);
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -68,8 +74,9 @@ h4 {
   font-size: 0.875rem;
 }
 p {
-  color: var(--clr-grey-5);
+  color: var(--grey-color);
   font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing);
 }
 @media screen and (min-width: 800px) {
   h1 {
@@ -116,11 +123,22 @@ p {
 }
 
 /* Project CSS */
-section {
+.section-center {
   width: 95%;
   margin: auto;
   padding: 1rem;
   height: 100vh;
+}
+
+.underline {
+  position: absolute;
+  bottom: -9px;
+  height: 4px;
+  width: 30%;
+  background-color: var(--secondary-blue);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: var(--radius);
 }
 
 .container {
@@ -130,84 +148,39 @@ section {
   place-items: center;
 }
 
+.holiday-container {
+  display: grid;
+  gap: 0;
+  box-shadow: var(--dark-shadow);
+}
+
+.holiday-info {
+  background-color: var(--soft-dark);
+  padding: 1rem;
+  border-radius: var(--card-radius);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.holiday-cost {
+  display: flex;
+  justify-content: space-between;
+}
+.img {
+  position: relative;
+  border-radius: var(--img-radius);
+  width: 100%;
+  height: 225px;
+  z-index: 2;
+}
+
 @media screen and (min-width: 992px) {
   .container {
     max-width: 600px;
   }
-}
-
-.people-list {
-  background-color: #222;
-  border-radius: var(--radius);
-  width: 100%;
-  box-shadow: var(--dark-shadow);
-}
-
-.user-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.user-list li {
-  padding: 1rem;
-  width: 100%;
-  border-bottom: 1px solid var(--divider-color);
-}
-
-article {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: start;
-  height: fit-content;
-}
-
-.person-img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  box-shadow: var(--dark-shadow);
-}
-
-.person-info {
-  width: 100%;
-}
-
-@media screen and (min-width: 992px) {
-  .person-info {
-    height: 40px;
-    display: grid;
+  .img {
+    height: 350px;
   }
-}
-
-.person-info .person-action {
-  display: flex;
-  color: var(--bg-blue);
-
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.person-info .person-action button {
-  border: none;
-  padding: 0.2rem 0.425rem 0.1rem 0.425rem;
-  background-color: transparent;
-  box-shadow: unset;
-  color: var(--delete-color);
-}
-
-.person-info .person-action button:hover {
-  background-color: var(--delete-color);
-  color: white;
-  box-shadow: var(--ligth-shadow);
-}
-
-article .person-info p {
-  font-size: 0.78rem;
-  color: var(--bg-blue);
-  font-style: italic;
-  width: 100%;
 }
 
 .btn-group {
@@ -217,12 +190,12 @@ article .person-info p {
 }
 
 .btn-group .btn-reset {
-  background-color: var(--secondary-blue);
+  background-color: var(--primary-blue);
   color: var(--bg-blue);
 }
 
 .btn-group .btn-reset:hover {
-  background-color: var(--primary-blue);
+  background-color: var(--secondary-blue);
   color: white;
 }
 
@@ -232,7 +205,7 @@ article .person-info p {
   border: 2px solid var(--delete-color);
 }
 
-.btn-group .btn-delete:hover {
+.btn-delete:hover {
   background-color: var(--delete-color);
   color: white;
 }
