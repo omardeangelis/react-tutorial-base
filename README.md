@@ -2,14 +2,19 @@
 
 ## Istruzioni Generali per l Utilizzo
 
-- Scaricare il file Zip oppure  Clonare (in questo caso rimuovere la cartella .git -rm rf .gti [mac] rmdir .git [windows])
-- Spostarsi all'interno del progetto in cui vogliamo lavorare ``` cd nomeprogetto/inizio ``` oppure ``` cd nomeprogetto/risultato ``` 
-- lanciare comando dal terminale ``` npm install ``` \
+- Scaricare il file Zip oppure Clonare (in questo caso rimuovere la cartella .git -rm rf .gti [mac] rmdir .git [windows])
+- Spostarsi all'interno del progetto in cui vogliamo lavorare `cd nomeprogetto/inizio` oppure `cd nomeprogetto/risultato`
+- lanciare comando dal terminale `npm install` \
 
-### Progetti Rispetto all'avanzamento del corso 
+### Progetti Rispetto all'avanzamento del corso
 
-#### Dopo aver concluso la sezione riguardo useState Hook 
+#### Dopo aver concluso la sezione riguardo useState Hook
 
-1) Appuntamenti 
+1. Appuntamenti
+
+#### Dopo aver concluso useEffect e Render Condizionale
+
+2. dark-mode
+3. vacanze
 
 #### Dopo aver concluso la sezione riguardo ad useEffect Hook
