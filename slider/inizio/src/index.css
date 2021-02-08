@@ -1,0 +1,269 @@
+:root {
+  /* Colors */
+  --dark-blue: #03045eff;
+  --secondary-blue: #0077b6ff;
+  --primary-blue: rgb(56, 146, 194);
+  --light-blue: #90e0efff;
+  --bg-blue: #caf0f8ff;
+  --text-color: #efefef;
+  --grey-color: #d4d3d3;
+  --delete-color: #df372b;
+  --divider-color: rgba(0, 0, 0, 0.1);
+  --dark-bg: #222;
+  --soft-dark: #272724;
+  /* Global */
+  --letter-spacing: 0.08rem;
+  --transition: all 0.3s linear;
+  --btn-transition: all 0.125s ease;
+  --radius: 0.25rem;
+  --img-radius: 0.25rem 0.25rem 0rem 0rem;
+  --card-radius: 0rem 0rem 0.25rem 0.25rem;
+  --btn-radius: 16px;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 4px 5px 15px rgba(5, 6, 6, 0.4);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* GLOBAL STYLE */
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--letter-spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  color: var(--grey-color);
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--btn-radius);
+  box-shadow: var(--light-shadow);
+  letter-spacing: var(--letter-spacing);
+  font-size: 0.55rem;
+  transition: var(--btn-transition);
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.icon {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Project CSS */
+.section-center {
+  width: 95%;
+  margin: auto;
+  padding: 1rem;
+  height: 100vh;
+}
+
+.underline {
+  position: absolute;
+  bottom: -9px;
+  height: 4px;
+  width: 30%;
+  background-color: var(--secondary-blue);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: var(--radius);
+}
+
+.container {
+  margin: auto;
+  gap: 3rem;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 400px;
+  width: 100%;
+}
+
+.slide {
+  width: 90%;
+  top: 35%;
+  left: 50%;
+  transform: translate(0%, -50%);
+  position: absolute;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.review {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.5rem;
+  background-color: var(--soft-dark);
+  border-radius: var(--btn-radius);
+  box-shadow: var(--dark-shadow);
+}
+
+.star-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.2rem;
+}
+
+.next {
+  right: 0;
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+.prev {
+  left: 0;
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.active {
+  transform: translate(-50%, 0%);
+  opacity: 1;
+}
+
+.holiday-container {
+  display: grid;
+  gap: 0;
+  box-shadow: var(--dark-shadow);
+}
+
+.holiday-info {
+  background-color: var(--soft-dark);
+  padding: 1rem;
+  border-radius: var(--card-radius);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.holiday-cost {
+  display: flex;
+  justify-content: space-between;
+}
+.img {
+  position: relative;
+  border-radius: var(--img-radius);
+  width: 100%;
+  height: 225px;
+  z-index: 2;
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 600px;
+  }
+  .img {
+    height: 350px;
+  }
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slider-btn-group {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+}
+
+.btn-group .btn-slider {
+  background-color: var(--primary-blue);
+  height: fit-content;
+  color: var(--bg-blue);
+}
+
+.btn-group .btn-slider:hover {
+  background-color: var(--secondary-blue);
+  color: white;
+}
+
+.btn-group .btn-delete {
+  background-color: transparent;
+  color: var(--delete-color);
+  border: 2px solid var(--delete-color);
+}
+
+.btn-delete:hover {
+  background-color: var(--delete-color);
+  color: white;
+}
