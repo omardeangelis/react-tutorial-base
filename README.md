@@ -16,5 +16,10 @@
 
 2. dark-mode
 3. vacanze
+4. slider
+5. Gelateria
 
-#### Dopo aver concluso la sezione riguardo ad useEffect Hook
+#### Dopo aver concluso la sezione riguardo a Form e useRef
+
+6. Color-Grading
+7. Navbar
