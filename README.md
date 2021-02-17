@@ -23,3 +23,8 @@
 
 6. Color-Grading
 7. Navbar
+
+#### Dopo aver concluso la sezione riguardo ad useReducer, propDrilling e useContext
+
+8. sidebar
+9. cart
