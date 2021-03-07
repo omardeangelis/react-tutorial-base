@@ -292,6 +292,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 5rem;
   }
 
   .nav-icon {

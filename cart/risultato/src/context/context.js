@@ -1,9 +1,13 @@
 import React, { useContext, useReducer, useEffect } from "react";
+//axios
+import axios from "axios";
 //Import Funzione a cui delego la gestione delle mie funzioni
 import reducer from "./reducer";
 //importo tutte action.type
 import {
-  FETCH_E_MODIFICA,
+  DATA_FETCHING_STARTED,
+  DATA_FETCHING_FAILED,
+  DATA_FETCHING_SUCCESS,
   DELETE_ITEM,
   AUMENTA_QTY,
   DIMINUISCI_QTY,
@@ -11,8 +15,6 @@ import {
   CONTATORE,
   COSTO_TOTALE,
 } from "./actions";
-//Importo customHooks
-import useFetch from "./useFetch";
 // Creo il context per essere utilizzato dai miei componenti
 const AppContext = React.createContext();
 
@@ -23,18 +25,13 @@ const url = "https://react-corso-api.netlify.app/.netlify/functions/cartshop";
 const initialState = {
   products: [],
   isLoading: true,
+  isError: false,
   total: 0,
   itemCounter: 0,
 };
 //Componente con cui Wrappare la nostra intera app (o il componente che ha bisogno di accedere ad un determinato provider)
 const AppProvider = ({ children }) => {
-  const { data } = useFetch(url);
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  //Modifica e dai fetchati dal nostro custom Hooks
-  const fetchData = () => {
-    return dispatch({ type: FETCH_E_MODIFICA, payload: data });
-  };
 
   const deleteItem = (id) => {
     return dispatch({ type: DELETE_ITEM, payload: id });
@@ -55,11 +52,20 @@ const AppProvider = ({ children }) => {
     return dispatch({ type: SVUOTA_CARRELLO });
   };
   useEffect(() => {
-    if (data && !state.products.length > 0) {
-      fetchData();
-    }
+    (async () => {
+      dispatch({ type: DATA_FETCHING_STARTED });
+      try {
+        const response = await axios.get(url);
+        dispatch({
+          type: DATA_FETCHING_SUCCESS,
+          payload: response.data.default,
+        });
+      } catch (err) {
+        dispatch({ type: DATA_FETCHING_FAILED });
+      }
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     dispatch({ type: COSTO_TOTALE });
@@ -69,7 +75,6 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        fetchData,
         deleteItem,
         addQty,
         dimQty,

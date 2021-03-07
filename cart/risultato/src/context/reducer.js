@@ -1,5 +1,7 @@
 import {
-  FETCH_E_MODIFICA,
+  DATA_FETCHING_STARTED,
+  DATA_FETCHING_FAILED,
+  DATA_FETCHING_SUCCESS,
   DELETE_ITEM,
   AUMENTA_QTY,
   DIMINUISCI_QTY,
@@ -9,15 +11,24 @@ import {
 } from "./actions";
 
 const reducer = (state, action) => {
-  if (action.type === FETCH_E_MODIFICA) {
+  //Inizio fetch dei dati
+  if (action.type === DATA_FETCHING_STARTED) {
+    return { ...state, isError: false, isLoading: false };
+  }
+  if (action.type === DATA_FETCHING_SUCCESS) {
     //Modifico Dati Fetchati Array
     return {
       ...state,
       isLoading: false,
+      isError: false,
       products: action.payload.map((el) => {
         return { ...el, qty: 1 };
       }),
     };
+  }
+  //Fetch dei dati fallito
+  if (action.type === DATA_FETCHING_FAILED) {
+    return { ...state, isError: true, isLoading: false };
   }
   //Rimuovo un item
   if (action.type === DELETE_ITEM) {
