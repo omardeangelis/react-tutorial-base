@@ -145,7 +145,7 @@ p {
 }
 
 .nav-icon {
-  color: var(--byzantine);
+  color: var(--trypan-blue-2);
 }
 
 .icon {
@@ -185,7 +185,8 @@ NAV STYLE
 }
 
 .nav-brand {
-  color: var(--byzantine);
+  margin-bottom: 0.1rem;
+  color: var(--trypan-blue-2);
   text-transform: lowercase;
   font-variant: small-caps;
 }
@@ -285,6 +286,7 @@ NAV STYLE MEDIA QUERY
     display: flex;
     align-items: center;
     gap: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -375,6 +377,38 @@ SIDEBAR MEDIA QUERY STYLE
   .sidebar {
     display: none;
   }
+}
+
+/*
+====================
+END SIDEBAR STYLE
+====================
+*/
+
+/*
+====================
+FOOTER STYLE
+====================
+*/
+.footer {
+  background-color: var(--trypan-blue-2);
+  height: 4rem;
+}
+
+.footer-container {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-variant: small-caps;
+  color: var(--text-color);
+}
+
+.footer-container .brand-color {
+  color: var(--flickr-pink);
+}
+
+.footer-text {
+  font-size: 1.03em !important;
 }
 
 /* SPINNER STYLE AND ANIMATION*/
