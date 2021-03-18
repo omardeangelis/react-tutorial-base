@@ -1,6 +1,6 @@
 import React from "react";
 import backImage from "../assets/image/home-hero.jpg";
-const Hero = ({ children, img }) => {
+const Hero = ({ children, img, disableOverlay }) => {
   const image = img ? img : backImage;
   return (
     <div
@@ -12,7 +12,7 @@ const Hero = ({ children, img }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="hero-overlay">
+      <div className={!disableOverlay ? "hero-overlay" : ""}>
         <div className="container hero-container">{children}</div>
       </div>
     </div>

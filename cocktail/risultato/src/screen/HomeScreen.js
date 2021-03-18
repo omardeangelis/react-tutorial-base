@@ -51,7 +51,7 @@ const HomeScreen = () => {
               </button>
             </form>
           </div>
-          <p className="">50 risultati</p>
+          <p className="result">50 risultati</p>
         </div>
       </section>
     </>

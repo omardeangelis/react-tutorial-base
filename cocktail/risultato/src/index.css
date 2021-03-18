@@ -150,15 +150,20 @@ p {
   color: var(--flickr-pink);
 }
 
-.underline {
+.underline,
+.topline {
   position: absolute;
-  bottom: -9px;
-  height: 4px;
-  width: 30%;
+  bottom: -13px;
+  height: 2px;
+  width: 80%;
   background-color: var(--flickr-pink);
   left: 50%;
   transform: translateX(-50%);
   border-radius: var(--radius);
+}
+
+.topline {
+  top: -13px;
 }
 
 /*
@@ -393,7 +398,7 @@ HERO STYLE
   position: relative;
   background-position: top;
   background-size: contain;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   z-index: 1;
 }
@@ -415,34 +420,57 @@ HERO STYLE
 }
 
 /*=== HOME HERO ===*/
+
+.home-hero {
+  display: grid;
+  height: 100%;
+  align-items: center;
+}
+
+.home-hero-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  color: var(--text-color);
+}
+
+.home-hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-hero-title h2 {
+  font-weight: 900;
+}
+
+.home-hero-title h4 {
+  font-variant: small-caps;
+}
+
+.home-hero-text p {
+  color: var(--light-gray);
+  max-width: 70ch;
+  line-height: 1.6;
+}
+
+.home-hero-text button {
+  align-self: center;
+  border-radius: 22px;
+}
+
+/*=== HOME HERO MEDIA ===*/
 @media screen and (min-width: 992px) {
   .home-hero {
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
-    height: 100%;
-    align-items: center;
   }
 
   .home-hero-text {
     grid-column: 1/7;
-    display: flex;
-    flex-direction: column;
     gap: 3rem;
-    color: var(--text-color);
-  }
-
-  .home-hero-title {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .home-hero-title h2 {
-    font-weight: 900;
-  }
-
-  .home-hero-title h4 {
-    font-variant: small-caps;
+    text-align: left;
   }
 
   .home-hero-text p {
@@ -451,8 +479,122 @@ HERO STYLE
     line-height: 1.6;
   }
 
+  .home-hero-text button {
+    align-self: unset;
+  }
+
   .home-hero-img {
     grid-column: 8/-1;
+  }
+}
+/*=== ABOUT HERO ===*/
+
+.about-hero {
+  display: grid;
+  height: 100%;
+  place-items: center;
+}
+.about-text {
+  position: relative;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 45ch;
+  color: var(--light-gray);
+}
+.about-text h3 {
+  line-height: 1.4;
+  font-style: italic;
+}
+@media screen and (min-width: 992px) {
+  .about-text {
+    max-width: 65ch;
+  }
+}
+
+/*=== CONTACT HERO ===*/
+.contact-hero {
+  display: grid;
+  height: 100%;
+
+  align-items: center;
+}
+
+.contact-hero-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+}
+
+.contact-title {
+  line-height: 1.05;
+}
+
+.contact-subtitle {
+  color: var(--primary-gray);
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 55ch;
+  margin: auto;
+}
+
+.contact-hero-title {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form-container {
+  margin-top: 2rem;
+  display: grid;
+  background-color: white;
+  border-radius: var(--radius);
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  box-shadow: var(--light-shadow);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: var(--trypan-blue-2);
+}
+
+.form-group .input {
+  border-radius: 0;
+  border: 0px 0px 1px 0px solid var(--dark-gray);
+  padding-left: 0.1rem;
+  letter-spacing: var(--letter-spacing);
+}
+
+.contact-form button {
+  align-self: center;
+  border-radius: 22px;
+  box-shadow: var(--light-shadow);
+}
+
+@media screen and (min-width: 992px) {
+  .contact-form-container {
+    margin-top: 4rem;
+  }
+  .contact-hero-text {
+    margin-top: 4rem;
   }
 }
 
@@ -467,45 +609,140 @@ END HERO STYLE
 HOMESCREEN STYLE
 ====================
 */
+
+.home-screen {
+  margin: 2rem auto;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form-container form {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.input {
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--primary-gray);
+  color: var(--dark-gray);
+}
+
+.input:focus {
+  box-shadow: 0px 0px 1px 0px rgb(44, 44, 44);
+  outline: 0px transparent;
+}
+
+.search-bar .result {
+  align-self: left;
+}
+
 @media screen and (min-width: 992px) {
   .home-screen {
     margin: 3rem auto;
   }
 
-  .form-container {
-    display: flex;
-    justify-content: flex-start;
-  }
-
   .search-bar {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .form-container form {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .input {
-    padding: 0.5rem 1rem;
-    border-radius: 16px;
-    border: 1px solid var(--primary-gray);
-    color: var(--dark-gray);
-  }
-
-  .input:focus {
-    box-shadow: 0px 0px 1px 0px rgb(44, 44, 44);
-    outline: 0px transparent;
   }
 }
 
 /*
 ====================
 END HOMESCREEN STYLE
+====================
+*/
+
+/*
+====================
+ABOUTSCREEN STYLE
+====================
+*/
+
+.about-value {
+  margin: 0 auto;
+  background-color: var(--extra-light-gray);
+}
+.about-value-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+.about-value h3.brand-secondary-color {
+  text-align: center;
+}
+.card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-team {
+  margin: 0 auto;
+  background-color: white;
+}
+
+.about-team .team-img {
+  position: relative;
+  height: 70vh;
+}
+
+.about-team .team-img::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  height: 15vh;
+  clip-path: polygon(100% 40%, -20% 110%, 100% 100%);
+}
+
+.about-team-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-value {
+    margin: 0rem auto;
+  }
+
+  .about-team .team-img::before {
+    clip-path: polygon(100% 0, -30% 130%, 100% 100%);
+  }
+
+  .about-value-content {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    gap: 3rem;
+  }
+  .card-section {
+    flex-direction: row;
+    align-items: unset;
+  }
+}
+
+/*
+====================
+END ABOUTSCREEN STYLE
 ====================
 */
 
@@ -529,6 +766,10 @@ FOOTER STYLE
 
 .brand-color {
   color: var(--flickr-pink);
+}
+
+.brand-secondary-color {
+  color: var(--trypan-blue-2);
 }
 
 .footer-text {
