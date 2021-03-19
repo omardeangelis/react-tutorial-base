@@ -39,7 +39,7 @@ const Wrapper = styled.article`
     .card-title {
       color: white;
     }
-    .card-text {
+    .card-text p {
       color: var(--extra-light-gray);
     }
   }

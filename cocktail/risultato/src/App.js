@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomeScreen from "./screen/HomeScreen";
 import AboutScreen from "./screen/AboutScreen";
 import ContactScreen from "./screen/ContactScreen";
+import SingleCocktailScreen from "./screen/SingleCocktailScreen";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" exact component={HomeScreen} />
         <Route path="/about" component={AboutScreen} />
         <Route path="/contattaci" component={ContactScreen} />
+        <Route path="/cocktail/:id" component={SingleCocktailScreen} />
       </Switch>
       <Footer />
     </Router>

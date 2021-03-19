@@ -1,9 +1,33 @@
-import React from "react";
-import { Hero } from "../components";
+import React, { useEffect, useState } from "react";
+import { Hero, Cocktails } from "../components";
 import { FaSearch } from "react-icons/fa";
 import Lottie from "react-lottie";
 import animationData from "../assets/animation/drink-animation.json";
+import { useGlobalContext } from "../context";
 const HomeScreen = () => {
+  const {
+    data,
+    isLoading,
+    isError,
+    searchCocktail,
+    query,
+    count,
+    deleteScrollPosition,
+    scrollPosition,
+  } = useGlobalContext();
+  const [input, setInput] = useState(query);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchCocktail(input);
+  };
+
+  useEffect(() => {
+    console.log(scrollPosition);
+    if (scrollPosition) {
+      window.scrollTo(0, scrollPosition);
+      deleteScrollPosition();
+    }
+  }, []);
   return (
     <>
       <Hero>
@@ -32,8 +56,7 @@ const HomeScreen = () => {
                   preserveAspectRatio: "xMidYMid slice",
                 },
               }}
-              height={400}
-              width={400}
+              height={350}
             />
           </div>
         </div>
@@ -41,18 +64,33 @@ const HomeScreen = () => {
       <section className="container home-screen">
         <div className="search-bar">
           <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
               <label htmlFor="drink">
                 <h4>Cerca il tuo drink</h4>
               </label>
-              <input id="drink" className="input" placeholder="cocktail" />
-              <button className="btn icon-btn">
-                <FaSearch className="icon" />
-              </button>
+              <div className="input-search">
+                <input
+                  id="drink"
+                  className="input"
+                  placeholder={query}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <button className="btn icon-btn" type="submit">
+                  <FaSearch className="icon" />
+                </button>
+              </div>
             </form>
           </div>
-          <p className="result">50 risultati</p>
+          <p className="result">{count} risultati</p>
         </div>
+        {!isLoading && isError ? (
+          <h5>Nessun Cocktail Disponibile</h5>
+        ) : !isLoading && !isError ? (
+          <Cocktails data={data.drinks} />
+        ) : (
+          <h5>is Loading</h5>
+        )}
       </section>
     </>
   );
