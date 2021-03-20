@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Hero, Cocktails } from "../components";
+import { Hero, Cocktails, Loading, ErrorMessage } from "../components";
 import { FaSearch } from "react-icons/fa";
 import Lottie from "react-lottie";
 import animationData from "../assets/animation/drink-animation.json";
 import { useGlobalContext } from "../context";
+import { Link } from "react-router-dom";
 const HomeScreen = () => {
   const {
     data,
@@ -22,11 +23,11 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    console.log(scrollPosition);
     if (scrollPosition) {
       window.scrollTo(0, scrollPosition);
       deleteScrollPosition();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -43,7 +44,9 @@ const HomeScreen = () => {
               <span className="brand-color">Gratuita</span>, le ricette dei più
               importanti e diffusi cocktail al mondo.
             </p>
-            <button className="btn btn-primary">Scopri di più</button>
+            <Link to="/about" className="btn btn-primary">
+              Scopri di più
+            </Link>
           </div>
           <div className="home-hero-img">
             <Lottie
@@ -85,11 +88,11 @@ const HomeScreen = () => {
           <p className="result">{count} risultati</p>
         </div>
         {!isLoading && isError ? (
-          <h5>Nessun Cocktail Disponibile</h5>
+          <ErrorMessage>Nessun Cocktail Trovato</ErrorMessage>
         ) : !isLoading && !isError ? (
           <Cocktails data={data.drinks} />
         ) : (
-          <h5>is Loading</h5>
+          <Loading />
         )}
       </section>
     </>

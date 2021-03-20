@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { HiClipboardList } from "react-icons/hi";
 import { useGlobalContext } from "../context";
 
@@ -38,13 +38,13 @@ const Cocktail = ({ strDrinkThumb: img, idDrink: _id, strDrink: name }) => {
         }
       >
         <h5>{name}</h5>
-        <Link
+        <div
           className="see-more-btn brand-color"
           onClick={() => goToCocktail(_id)}
         >
           <h5>Ricetta</h5>
           <HiClipboardList className="icon " />
-        </Link>
+        </div>
       </div>
       <div className="card-text-sm container">
         <h5>{name}</h5>

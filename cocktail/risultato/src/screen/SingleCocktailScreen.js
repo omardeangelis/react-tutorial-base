@@ -1,20 +1,35 @@
 import React from "react";
 import useFetch from "../useFetch";
+import { Loading, ErrorMessage } from "../components";
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import styled from "styled-components";
 const SingleCocktailScreen = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useFetch(`i=${id}`, true);
-  if (data) {
-    console.log(data);
-  }
   if (isLoading) {
-    return <h3>Loading...</h3>;
+    return (
+      <Wrapper>
+        <Loading />;
+      </Wrapper>
+    );
   }
   if (isError) {
-    return <h3>Cocktail non disponibile</h3>;
+    return (
+      <Wrapper>
+        <div className="cocktail-content container">
+          <header>
+            <Link to="/">
+              <IoArrowBackCircleSharp className="icon" />
+            </Link>
+            <h4 className="back-arrow">Torna in Home</h4>
+          </header>
+          <ErrorMessage>Cocktail Non Disponibile</ErrorMessage>
+        </div>
+      </Wrapper>
+    );
   }
+
   const {
     strAlcoholic: type,
     strCategory: category,
@@ -85,7 +100,9 @@ const SingleCocktailScreen = () => {
 
             <div className="spacer">
               <h4>Istruzioni :</h4>
-              <p>{strInstructionsIT ? strInstructionsIT : strInstructions}</p>
+              <p className="info">
+                {strInstructionsIT ? strInstructionsIT : strInstructions}
+              </p>
             </div>
           </div>
         </div>
@@ -99,7 +116,7 @@ const Wrapper = styled.section`
   padding-bottom: 4rem;
   .spacer {
     display: grid;
-    gap: 0.225rem;
+    gap: 0.325rem;
   }
   .cocktail-content {
     display: grid;
@@ -109,7 +126,7 @@ const Wrapper = styled.section`
       align-items: center;
       justify-content: flex-start;
       gap: 2rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
       margin-bottom: 0;
       .icon {
         font-size: 2.5rem;
@@ -136,7 +153,10 @@ const Wrapper = styled.section`
       .cocktail-datails {
         display: flex;
         flex-direction: column;
-        gap: 1rem !important;
+        gap: 1rem;
+        h2 {
+          text-transform: uppercase;
+        }
         .cocktail-type {
           display: flex;
           gap: 0.5rem !important;
@@ -162,13 +182,13 @@ const Wrapper = styled.section`
         }
         .instruction-list {
           list-style: outside;
-          padding-left: 1rem;
+          padding-left: 1.1rem;
         }
       }
     }
   }
-  @media screen and (min-width: 992px) {
-    height: 84.5vh;
+  @media screen and (min-width: 753px) {
+    min-height: 84.5vh;
     hr {
       display: none;
     }
@@ -176,6 +196,7 @@ const Wrapper = styled.section`
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       .img {
+        max-height: 500px;
         grid-column: 1/6;
         grid-row: 1/1;
         width: 100%;
@@ -184,10 +205,19 @@ const Wrapper = styled.section`
         grid-column: 6/-1;
         grid-row: 1/1;
         width: 100%;
-        .cocktail-type {
-          display: grid;
-          gap: 0.5rem !important;
-        }
+        gap: 1rem !important;
+      }
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .cocktail-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      .img {
+        max-height: 600px;
+        grid-column: 1/5;
+        grid-row: 1/1;
+        width: 100%;
       }
     }
   }

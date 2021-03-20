@@ -34,12 +34,17 @@ const LinkComponent = ({ classLink }) => {
     <ul className={classLink}>
       {links.map((link) => {
         return (
-          <li key={link.text} className="nav-item" onClick={closeSidebar}>
-            <Link to={link.url} className="nav-link">
+          <Link
+            key={link.text}
+            to={link.url}
+            className="nav-item"
+            onClick={closeSidebar}
+          >
+            <div className="nav-link">
               {link.icon}
               <h5 className="nav-text">{link.text}</h5>
-            </Link>
-          </li>
+            </div>
+          </Link>
         );
       })}
     </ul>

@@ -72,7 +72,6 @@ h2,
 h3,
 h4 {
   letter-spacing: var(--letter-spacing);
-  line-height: 1.25;
 }
 h1 {
   font-size: 3rem;
@@ -91,7 +90,7 @@ p {
   font-size: 0.9rem;
   letter-spacing: var(--letter-spacing);
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 753px) {
   h1 {
     font-size: 4rem;
   }
@@ -196,7 +195,7 @@ NAV STYLE
 }
 
 .nav-toggler {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding-bottom: 0;
   align-self: center;
   transition: var(--btn-transition);
@@ -277,9 +276,7 @@ NAV STYLE MEDIA QUERY
 
   .nav-links {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3rem;
+    gap: 5rem;
   }
 
   .nav-icon {
@@ -336,7 +333,7 @@ SIDEBAR STYLE
   background: white;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   transform: translateX(-100%);
   transition: var(--transition);
 }
@@ -359,6 +356,11 @@ SIDEBAR STYLE
   font-size: 1.2em;
 }
 
+.sidebar-links .nav-item {
+  width: 100%;
+  padding: 0.5rem 0rem;
+}
+
 .sidebar-social {
   width: fit-content;
   margin: 2rem auto;
@@ -366,6 +368,11 @@ SIDEBAR STYLE
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
+}
+
+.nav-item:hover .nav-link .nav-icon {
+  transform: scale(1.1);
+  color: var(--flickr-pink) !important;
 }
 
 .show-sidebar {
@@ -453,6 +460,7 @@ HERO STYLE
 }
 
 .home-hero-text p {
+  align-self: center;
   color: var(--light-gray);
   max-width: 70ch;
   line-height: 1.6;
@@ -476,6 +484,7 @@ HERO STYLE
   }
 
   .home-hero-text p {
+    align-self: flex-start;
     color: var(--light-gray);
     max-width: 70ch;
     line-height: 1.6;
@@ -728,12 +737,12 @@ ABOUTSCREEN STYLE
 .about-team .team-img::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 0;
-  width: 100%;
+  width: 100.1%;
   background-color: white;
   height: 15vh;
-  clip-path: polygon(100% 40%, -20% 110%, 100% 100%);
+  clip-path: polygon(100% 40%, -40% 110%, 100% 100%);
 }
 
 .about-team-content {
@@ -743,13 +752,19 @@ ABOUTSCREEN STYLE
   gap: 2rem;
 }
 
+@media screen and (min-width: 753px) {
+  .about-team .team-img::before {
+    clip-path: polygon(100% 10%, -20% 100%, 100% 100%);
+  }
+}
+
 @media screen and (min-width: 992px) {
   .about-value {
     margin: 0rem auto;
   }
 
   .about-team .team-img::before {
-    clip-path: polygon(100% 0, -30% 130%, 100% 100%);
+    clip-path: polygon(100% 0, -50% 130%, 100% 100%);
   }
 
   .about-value-content {
@@ -760,6 +775,10 @@ ABOUTSCREEN STYLE
   .card-section {
     flex-direction: row;
     align-items: unset;
+  }
+
+  .about-team-content .card-section {
+    flex-wrap: wrap;
   }
 }
 
@@ -806,6 +825,12 @@ END FOOTER STYLE
 */
 
 /* SPINNER STYLE AND ANIMATION*/
+.loading-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .lds-roller {
   display: inline-block;
   position: relative;

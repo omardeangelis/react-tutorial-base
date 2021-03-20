@@ -4,6 +4,7 @@ import HomeScreen from "./screen/HomeScreen";
 import AboutScreen from "./screen/AboutScreen";
 import ContactScreen from "./screen/ContactScreen";
 import SingleCocktailScreen from "./screen/SingleCocktailScreen";
+import ErrorScreen from "./screen/ErrorScreen";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" component={AboutScreen} />
         <Route path="/contattaci" component={ContactScreen} />
         <Route path="/cocktail/:id" component={SingleCocktailScreen} />
+        <Route path="*" component={ErrorScreen} />
       </Switch>
       <Footer />
     </Router>

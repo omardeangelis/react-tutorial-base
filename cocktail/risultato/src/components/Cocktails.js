@@ -18,7 +18,13 @@ const Wrapper = styled.section`
   display: grid;
   place-items: center;
   gap: 2rem;
+  @media screen and (min-width: 753px) {
+    grid-template-columns: 1fr 1fr;
+  }
   @media screen and (min-width: 992px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `;

@@ -18,14 +18,17 @@ const AppProvider = ({ children }) => {
   };
   //END SIDEBAR FUNCTION
 
+  //Cerca cocktail: Quando cambia Query, ho un nuovo rendere di useFetch
   const searchCocktail = (input) => {
     setQuery(input);
   };
 
+  //Aggiorno lo state con la posizione in cui ho cliccato sulla ricetta
   const getScrollPosition = (value) => {
     setScrollPosition(value);
   };
 
+  //Imposto state dello scroll position a 0
   const deleteScrollPosition = () => {
     setScrollPosition(0);
   };
