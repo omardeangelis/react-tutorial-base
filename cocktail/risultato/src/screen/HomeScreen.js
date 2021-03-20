@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useTitle from "../useTitle";
 import { Hero, Cocktails, Loading, ErrorMessage } from "../components";
 import { FaSearch } from "react-icons/fa";
 import Lottie from "react-lottie";
@@ -22,6 +23,7 @@ const HomeScreen = () => {
     searchCocktail(input);
   };
 
+  useTitle("HOME");
   useEffect(() => {
     if (scrollPosition) {
       window.scrollTo(0, scrollPosition);
