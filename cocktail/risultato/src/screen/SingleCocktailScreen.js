@@ -125,9 +125,10 @@ const Wrapper = styled.section`
     display: grid;
     gap: 2rem;
     header {
-      display: flex;
+      display: grid;
       align-items: center;
       justify-content: flex-start;
+      grid-template-columns: auto 1fr;
       gap: 2rem;
       margin-top: 2rem;
       margin-bottom: 0;
@@ -154,18 +155,19 @@ const Wrapper = styled.section`
         border-radius: var(--radius);
       }
       .cocktail-datails {
-        display: flex;
-        flex-direction: column;
+        display: grid;
         gap: 1rem;
         h2 {
           text-transform: uppercase;
         }
         .cocktail-type {
-          display: flex;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          justify-content: flex-start;
           gap: 0.5rem !important;
           .label {
             text-transform: lowercase;
-            font-size: 1.01em;
+            font-size: 0.8em;
             font-weight: 700;
             letter-spacing: var(--letter-spacing);
             font-variant: small-caps;
@@ -173,7 +175,7 @@ const Wrapper = styled.section`
             border: 1px solid var(--soft-light-gray);
             border-radius: var(--radius);
             background-color: var(--extra-light-gray);
-            padding: 0.2rem;
+            padding: 0rem 0.5rem;
           }
         }
         .info {

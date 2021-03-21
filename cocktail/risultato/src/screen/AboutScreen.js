@@ -44,6 +44,7 @@ const AboutScreen = () => {
           }}
         ></div>
         <div className="about-team-content container">
+          <h3 className="brand-secondary-color">IL NOSTRO TEAM</h3>
           <div className="card-section">
             {teamCards.map((card) => (
               <Card key={card.title} {...card} />
