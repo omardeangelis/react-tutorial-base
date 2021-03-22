@@ -156,9 +156,8 @@ section {
 
 article {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
-  justify-content: start;
   height: fit-content;
 }
 
@@ -170,6 +169,7 @@ article {
 }
 
 .person-info {
+  padding-left: 1rem;
   width: 100%;
 }
 
