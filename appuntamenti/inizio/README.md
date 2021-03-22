@@ -1,3 +1,3 @@
 ### Per visionare il progetto completo
 
-Link al progetto completo: https://appuntamenti-app.netlify.app/
+Link al progetto completo: https://navbar-tutorial.netlify.app/
