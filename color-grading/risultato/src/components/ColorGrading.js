@@ -9,21 +9,28 @@ const ColorGrading = () => {
     qty: 10,
   });
   const handleChange = (e) => {
+    setIsError(false);
+
     const { name, value } = e.target;
     setColorInput({ ...colorInput, [name]: value });
   };
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (colorInput.color && colorInput.qty) {
       const { color, qty } = colorInput;
-      setSelectedColor(
-        new Values(color).all(Math.round((100 / parseInt(qty, 10)) * 2))
-      );
-      setColorInput({
-        color: "",
-        qty: 10,
-      });
+      try {
+        setSelectedColor(
+          new Values(color).all(Math.round((100 / parseInt(qty, 10)) * 2))
+        );
+        setColorInput({
+          color: "",
+          qty: 10,
+        });
+      } catch (error) {
+        setIsError(true);
+      }
     }
   };
 
@@ -66,7 +73,9 @@ const ColorGrading = () => {
         </button>
       </form>
       <section className="color-section">
-        {selectedColor ? (
+        {isError ? (
+          <h4 className="section-center">Nessun Colore Trovato</h4>
+        ) : !isError && selectedColor ? (
           selectedColor.map((el) => <SingleColor key={uuidv4()} {...el} />)
         ) : (
           <h4>Loading</h4>

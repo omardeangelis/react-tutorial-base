@@ -153,6 +153,9 @@ p {
 .container {
   margin: 1rem auto;
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   gap: 1.5rem;
 }
 
@@ -163,13 +166,22 @@ p {
 
 .vetrina {
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   gap: 1rem;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
 }
 
 .gelato {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
+  grid-template-columns: 1fr auto;
   background-color: var(--card-light-bg-color);
   gap: 1rem;
   align-items: center;
@@ -204,11 +216,20 @@ p {
 .prd-info {
   align-self: flex-start;
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   gap: 0.2rem;
 }
 
 .prd-header {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   align-items: baseline;
 }
@@ -230,8 +251,8 @@ p {
     max-width: 800px;
   }
   .img-container {
-    height: 150px;
-    width: 100%;
+    height: 125px;
+    width: 150px;
   }
 
   .vetrina {
@@ -247,7 +268,13 @@ p {
 }
 
 .btn-group {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   width: 100%;
 }

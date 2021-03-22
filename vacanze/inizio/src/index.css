@@ -71,11 +71,11 @@ h3 {
   font-size: 1.25rem;
 }
 h4 {
-  font-size: 0.875rem;
+  font-size: 1.125rem;
 }
 p {
   color: var(--grey-color);
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: var(--letter-spacing);
 }
 @media screen and (min-width: 800px) {
@@ -89,7 +89,7 @@ p {
     font-size: 1.75rem;
   }
   h4 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   body {
     font-size: 1rem;
@@ -144,11 +144,17 @@ p {
 .container {
   margin: auto;
   gap: 3rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   place-items: center;
 }
 
 .holiday-container {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 0;
   box-shadow: var(--dark-shadow);
@@ -158,12 +164,21 @@ p {
   background-color: var(--soft-dark);
   padding: 1rem;
   border-radius: var(--card-radius);
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 0.75rem;
 }
 
 .holiday-cost {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
 }
 .img {
@@ -185,6 +200,12 @@ p {
 
 .btn-group {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   width: 100%;
 }

@@ -127,6 +127,8 @@ section {
   margin: auto;
   gap: 3rem;
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
   place-items: center;
 }
 
@@ -156,9 +158,14 @@ section {
 
 article {
   display: flex;
-  gap: 1rem;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
-  justify-content: start;
   height: fit-content;
 }
 
@@ -170,6 +177,7 @@ article {
 }
 
 .person-info {
+  padding-left: 1rem;
   width: 100%;
 }
 
@@ -177,15 +185,23 @@ article {
   .person-info {
     height: 40px;
     display: grid;
+    display: -moz-grid;
+    display: -ms-grid;
+    display: -webkit-grid;
   }
 }
 
 .person-info .person-action {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
   color: var(--bg-blue);
-
-  gap: 1rem;
+  -ms-flex-align: center;
   align-items: center;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
 }
 
@@ -212,6 +228,12 @@ article .person-info p {
 
 .btn-group {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   width: 100%;
 }
