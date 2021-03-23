@@ -178,11 +178,20 @@ NAV STYLE
   height: 4rem;
   box-shadow: var(--light-shadow);
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
   align-items: center;
 }
 
 .nav-header {
   display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   align-items: center;
 }
@@ -211,6 +220,9 @@ NAV STYLE
 
 .nav-link {
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   align-items: center;
   grid-template-columns: auto 1fr;
   gap: 1rem;
@@ -249,6 +261,9 @@ NAV STYLE MEDIA QUERY
 
 @media screen and (min-width: 992px) {
   .nav {
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    -ms-justify-content: space-around;
     justify-content: space-around;
     height: 5rem;
   }
@@ -258,8 +273,14 @@ NAV STYLE MEDIA QUERY
   }
 
   .nav-container {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
     display: flex;
     align-items: center;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
     justify-content: space-between;
   }
 
@@ -276,8 +297,15 @@ NAV STYLE MEDIA QUERY
   }
 
   .nav-links {
+    width: 50%;
     display: flex;
-    gap: 5rem;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
   }
 
   .nav-icon {
@@ -286,6 +314,9 @@ NAV STYLE MEDIA QUERY
 
   .socialTop {
     display: grid;
+    display: -moz-grid;
+    display: -ms-grid;
+    display: -webkit-grid;
     align-items: center;
     grid-template-columns: auto auto auto;
     gap: 1rem;
@@ -300,7 +331,13 @@ END NAV STYLE
 */
 
 .btn-group {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
   display: flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
   width: 100%;
 }
@@ -333,11 +370,17 @@ SIDEBAR STYLE
   z-index: 2;
   width: 100%;
   background: white;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   transform: translateX(-100%);
   transition: var(--transition);
+}
+
+.sidebar-content {
+  height: 50%;
+  display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
+  gap: 2rem;
 }
 
 .sidebar .nav-header {
@@ -353,6 +396,10 @@ SIDEBAR STYLE
 
 .sidebar-links {
   display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
+  display: grid;
   place-items: flex-start;
   gap: 1rem;
   font-size: 1.2em;
@@ -367,6 +414,9 @@ SIDEBAR STYLE
   width: fit-content;
   margin: 2rem auto;
   font-size: 1.5rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
@@ -433,6 +483,9 @@ HERO STYLE
 /*=== HOME HERO ===*/
 
 .home-hero {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   height: 100%;
   align-items: center;
@@ -440,6 +493,9 @@ HERO STYLE
 
 .home-hero-text {
   width: 100%;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   place-items: center;
   text-align: center;
@@ -448,6 +504,9 @@ HERO STYLE
 }
 
 .home-hero-title {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 1rem;
 }
@@ -503,6 +562,9 @@ HERO STYLE
 /*=== ABOUT HERO ===*/
 
 .about-hero {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   height: 100%;
   place-items: center;
@@ -526,6 +588,9 @@ HERO STYLE
 
 /*=== CONTACT HERO ===*/
 .contact-hero {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   height: 100%;
   align-items: center;
@@ -533,6 +598,9 @@ HERO STYLE
 
 .contact-hero-text {
   width: 100%;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   place-items: center;
   text-align: center;
@@ -541,6 +609,9 @@ HERO STYLE
 
 .contact-hero-title {
   margin-top: 3rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 1rem;
 }
@@ -559,6 +630,9 @@ HERO STYLE
 
 .contact-form-container {
   margin-top: 2rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   background-color: white;
   border-radius: var(--radius);
@@ -568,11 +642,17 @@ HERO STYLE
 }
 
 .contact-form {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 1rem;
 }
 
 .form-group {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 0.4rem;
 }
@@ -629,20 +709,33 @@ HOMESCREEN STYLE
 }
 
 .form-container {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
+  -moz-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-justify-content: flex-start;
   justify-content: flex-start;
 }
 
 .form-container form {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 1rem;
 }
 
 form label .drink {
+  -ms-grid-column-align: start;
   justify-self: flex-start;
 }
 
 .form-container form .input-search {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: auto auto;
   gap: 3rem;
@@ -673,8 +766,14 @@ form label .drink {
 
   .search-bar {
     width: 100%;
+    display: -moz-grid;
+    display: -ms-grid;
+    display: -webkit-grid;
     display: grid;
     grid-template-columns: auto auto;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
     justify-content: space-between;
     align-items: center;
   }
@@ -709,6 +808,9 @@ ABOUTSCREEN STYLE
 .about-value-content {
   padding-top: 2rem;
   padding-bottom: 2rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   gap: 2rem;
 }
@@ -716,9 +818,11 @@ ABOUTSCREEN STYLE
   text-align: center;
 }
 .card-section {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
-  justify-content: space-between;
-  align-items: center;
+  place-items: center;
   gap: 2rem;
 }
 
@@ -746,6 +850,9 @@ ABOUTSCREEN STYLE
 .about-team-content {
   padding-top: 2rem;
   padding-bottom: 2rem;
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   place-items: center;
   gap: 2rem;
@@ -800,6 +907,9 @@ FOOTER STYLE
 }
 
 .footer-container {
+  display: -moz-grid;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   place-items: center;
   height: 100%;
