@@ -882,10 +882,11 @@ ABOUTSCREEN STYLE
     grid-template-columns: 1fr 1fr 1fr;
     align-items: unset;
   }
+}
 
+@media screen and (min-width: 1280px) {
   .about-team-content .card-section {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-
     flex-wrap: wrap;
   }
 }
