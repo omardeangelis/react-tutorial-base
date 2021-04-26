@@ -7,7 +7,6 @@ import {
   FaYoutubeSquare,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../context";
 
 const links = [
   {
@@ -28,18 +27,11 @@ const links = [
 ];
 
 const LinkComponent = ({ classLink }) => {
-  const { closeSidebar } = useGlobalContext();
-
   return (
     <ul className={classLink}>
       {links.map((link) => {
         return (
-          <Link
-            key={link.text}
-            to={link.url}
-            className="nav-item"
-            onClick={closeSidebar}
-          >
+          <Link key={link.text} to={link.url} className="nav-item">
             <div className="nav-link">
               {link.icon}
               <h5 className="nav-text">{link.text}</h5>

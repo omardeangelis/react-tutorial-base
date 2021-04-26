@@ -9,6 +9,7 @@
 
 ### Progetti Rispetto all'avanzamento del corso
 
+Per visionare anteprima dei progetti: https://hpv4learning.netlify.app/
 In ogni progetto troverete una cartella **inizio** ed una **risultato**
 
 #### Inizio

@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import Modal from "./Modal";
 
 function App() {
-  return <div>SideBae</div>;
+  return <div>SideBar</div>;
 }
 
 export default App;
