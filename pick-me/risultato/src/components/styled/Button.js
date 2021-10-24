@@ -17,66 +17,73 @@ const StyledButton = styled("button")(
     variants: {
       sm: {
         height: "24px",
-        borderRadius: "8px",
+        borderRadius: "18px",
         paddingX: "10px",
         fontSize: "12px",
       },
       md: {
         height: "36px",
-        borderRadius: "12px",
+        borderRadius: "22px",
         paddingX: "14px",
         fontSize: "14px",
       },
       lg: {
         height: "48px",
-        borderRadius: "16px",
+        borderRadius: "26px",
         paddingX: "14px",
-        fontSize: "14px",
+        fontSize: "16px",
       },
       xl: {
         height: "64px",
-        borderRadius: "16px",
+        borderRadius: "30px",
         paddingX: "22px",
-        fontSize: "14px",
+        fontSize: "18px",
       },
     },
   }),
   variant({
     variants: {
       contained: {
-        background: "var(--purple-300)",
-        color: "var(--white)",
+        background: "purple.300",
+        color: "white",
         border: "none",
         "&:hover": {
-          background: "var(--purple-600)",
+          background: "purple.600",
         },
       },
       outlined: {
         background: "transparent",
-        color: "var(--purple-300)",
-        border: "1.2px solid var(--purple-300)",
+        color: "purple.300",
+        border: "1.2px solid",
+        borderColor: "purple.300",
         "&:hover": {
-          color: "var(--purple-600)",
-          borderColor: "var(--purple-600)",
+          color: "purple.600",
+          borderColor: "purple.600",
+          "& svg > *": {
+            fill: "purple.600",
+          },
         },
       },
       text: {
         background: "transparent",
-        color: "var(--purple-300)",
+        color: "purple.300",
         border: "none",
         "&:hover": {
-          color: "var(--purple-600)",
+          color: "purple.600",
+          "& svg > *": {
+            fill: "purple.600",
+          },
         },
       },
       disabled: {
-        background: "var(--grey-600)",
-        color: "var(--grey-800)",
+        background: "grey.600",
+        color: "grey.800",
         border: "none",
         cursor: "not-allowed",
       },
     },
   }),
-  ({ isFullwidth }) =>
+  ({ isFullwidth, iconColor }) =>
     css({
       display: "inline-flex",
       justifyContent: "center",
@@ -88,12 +95,17 @@ const StyledButton = styled("button")(
       whiteSpace: "nowrap",
       userSelect: "none",
       cursor: "pointer",
+      letterSpacing: "0.1rem",
+      "& svg > *": {
+        fill: iconColor ? iconColor : "white",
+        transition: "all 250ms, transform 0.1s ease-in-out",
+      },
     }),
   compose(space, typography, position, shadow, borderRadius, layout)
 );
 
 const StyledContent = styled("div")({
-  transition: "all 250ms",
+  transition: "all 125ms",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -132,7 +144,7 @@ const Button = ({
         {children}
 
         {!isLoading && rightIcon && (
-          <ButtonIcon mr='6px'> {rightIcon} </ButtonIcon>
+          <ButtonIcon ml='6px'> {rightIcon} </ButtonIcon>
         )}
       </StyledContent>
     </StyledButton>

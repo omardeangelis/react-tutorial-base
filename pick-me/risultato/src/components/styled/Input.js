@@ -13,8 +13,9 @@ import {
 const InputWrapper = styled("input")(
   {
     background: "var(--grey-900)",
-    border: " 1px solid var(--grey-700)",
-    color: "var(--grey-700)",
+    border: "1px solid",
+    borderColor: "var(--grey-600)",
+    color: "var(--grey-600)",
     height: "48px",
     cursor: "text",
     borderRadius: "100px",
@@ -24,8 +25,8 @@ const InputWrapper = styled("input")(
     outline: "none",
     fontSize: "16px",
     lineHeight: "20px",
-    "&:placeholder": {
-      color: "var(--grey-600)",
+    "&::placeholder": {
+      color: "var(--grey-700)",
       lineHeight: "20px",
     },
   },

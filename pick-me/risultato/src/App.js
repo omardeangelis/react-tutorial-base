@@ -5,17 +5,40 @@ import {
   Button,
   Stack,
 } from "./components/styled";
+import { ReactComponent as RightIcon } from "./images/right-arrow.svg";
 
 function App() {
   return (
     <div className='App'>
       <Container size='xl'>
-        <Stack direction='column' spacing='20px' width='100%'>
+        <Stack
+          direction='column'
+          spacing='40px'
+          align='flex-start'
+          justify='flex-start'
+          width='100%'
+        >
           <Input placeholder='input' />
           <Input placeholder='input' />
-          <Button variant='text' size='sm'>
-            Premimi
-          </Button>
+          <Stack align='center' spacing='20px'>
+            <Button variant='contained' size='sm'>
+              Premimi
+            </Button>
+            <Button variant='outlined' size='md'>
+              Premimi
+            </Button>
+            <Button
+              variant='contained'
+              size='lg'
+              rightIcon={<RightIcon />}
+              iconColor='white'
+            >
+              Premimi
+            </Button>
+            <Button variant='contained' size='xl'>
+              Premimi
+            </Button>
+          </Stack>
 
           <Box
             height='200px'
