@@ -51,6 +51,7 @@ const Stack = ({
       childrenMarginRight={direction === "row-reverse" ? spacing : 0}
       align={align}
       justify={justify}
+      direction={direction}
     >
       {children}
     </StackWrapper>

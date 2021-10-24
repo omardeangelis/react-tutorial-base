@@ -47,16 +47,26 @@ const StyledButton = styled("button")(
         background: "var(--purple-300)",
         color: "var(--white)",
         border: "none",
+        "&:hover": {
+          background: "var(--purple-600)",
+        },
       },
       outlined: {
         background: "transparent",
         color: "var(--purple-300)",
         border: "1.2px solid var(--purple-300)",
+        "&:hover": {
+          color: "var(--purple-600)",
+          borderColor: "var(--purple-600)",
+        },
       },
       text: {
         background: "transparent",
         color: "var(--purple-300)",
         border: "none",
+        "&:hover": {
+          color: "var(--purple-600)",
+        },
       },
       disabled: {
         background: "var(--grey-600)",
@@ -77,6 +87,7 @@ const StyledButton = styled("button")(
       outline: "none",
       whiteSpace: "nowrap",
       userSelect: "none",
+      cursor: "pointer",
     }),
   compose(space, typography, position, shadow, borderRadius, layout)
 );
@@ -99,7 +110,7 @@ const ButtonIcon = styled.span(
   space
 );
 
-export const Button = ({
+const Button = ({
   variant,
   leftIcon,
   rightIcon,
@@ -127,3 +138,5 @@ export const Button = ({
     </StyledButton>
   );
 };
+
+export default Button;
