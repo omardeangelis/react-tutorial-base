@@ -6,8 +6,14 @@ import {
   Stack,
 } from "./components/styled";
 import { ReactComponent as RightIcon } from "./images/right-arrow.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "./redux/reducers/cart-reducer";
 
 function App() {
+  const { value } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  console.log(value);
   return (
     <div className='App'>
       <Container size='xl'>
@@ -29,13 +35,19 @@ function App() {
             </Button>
             <Button
               variant='contained'
+              onClick={() => dispatch(increment())}
               size='lg'
               rightIcon={<RightIcon />}
               iconColor='white'
             >
               Premimi
             </Button>
-            <Button variant='contained' size='xl'>
+
+            <Button
+              variant='contained'
+              size='xl'
+              onClick={() => dispatch(decrement())}
+            >
               Premimi
             </Button>
           </Stack>
