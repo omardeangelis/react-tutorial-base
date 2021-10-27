@@ -31,15 +31,7 @@ const Hero = () => {
       <CustomStack spacing='118px'>
         <Stack direction='column' align='start' spacing='48px' flex='1 1 auto'>
           <Box>
-            <h1
-              style={{
-                fontSize: "72px",
-                fontWeight: 700,
-                lineHeight: "78px",
-              }}
-            >
-              The easiest way to buy Photos as NFT.
-            </h1>
+            <h1>The easiest way to buy Photos as NFT.</h1>
           </Box>
           <CustomButton
             variant='text'

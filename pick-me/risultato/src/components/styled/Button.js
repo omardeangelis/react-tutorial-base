@@ -31,7 +31,7 @@ const StyledButton = styled("button")(
         height: "48px",
         borderRadius: "26px",
         paddingX: "14px",
-        fontSize: "16px",
+        fontSize: "28px",
       },
       xl: {
         height: "64px",
