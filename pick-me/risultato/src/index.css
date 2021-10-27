@@ -22,3 +22,17 @@ body {
   color: var(--white);
   font-family: "Poppins", sans-serif;
 }
+
+h1 {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 78px;
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+  }
+}

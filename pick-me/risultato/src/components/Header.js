@@ -6,7 +6,12 @@ import { Link } from "@reach/router";
 const Header = () => {
   return (
     <>
-      <Container size='fullwidth' position='fixed'>
+      <Container
+        size='fullwidth'
+        position='fixed'
+        background='grey.800'
+        zIndex={999}
+      >
         <Stack direction='column' align='center'>
           <Container>
             <Stack
