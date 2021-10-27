@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Stack, Box, Button } from "./styled";
 import { ReactComponent as Logo } from "../images/logo.svg";
 import { ReactComponent as CartIcon } from "../images/cart.svg";
+import { Link } from "@reach/router";
 const Header = () => {
   return (
     <>
@@ -16,7 +17,14 @@ const Header = () => {
             >
               <Logo />
               <Button variant='text'>
-                <CartIcon />
+                <Link
+                  to='/checkout'
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <CartIcon />
+                </Link>
               </Button>
             </Stack>
           </Container>
