@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
 import { Container } from "./styled";
-import instance from "../api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../redux/reducers/api-reducer";
 const HomeBody = () => {
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await instance.get("photos");
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+  const dispatch = useDispatch();
+  const { photos, error, loading } = useSelector((state) => state.photos);
+
+  console.log(photos, error, loading);
+  useEffect(() => dispatch(fetchData("photos")), [dispatch]);
   return (
     <Container>
       <div>Ciao</div>
