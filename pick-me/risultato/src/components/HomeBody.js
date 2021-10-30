@@ -3,6 +3,7 @@ import { Box, Button, Container, InputWrapper, Stack } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../redux/reducers/api-reducer";
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
+import Photo from "./Photo";
 const HomeBody = () => {
   const dispatch = useDispatch();
   const { photos, error, loading, rate_limit } = useSelector(
@@ -10,6 +11,8 @@ const HomeBody = () => {
   );
 
   console.log("FROM COMPONENT", photos, error, loading, rate_limit);
+
+  const defaultUrl = !loading && photos.results[0].urls.full;
 
   // const fetchLatestPhotos = useCallback(() => {
   //   dispatch(fetchData("photos?per_page=5&page=3&order_by=latest"));
@@ -64,6 +67,14 @@ const HomeBody = () => {
             ></Button>
           </Stack>
         </Box>
+      </Container>
+
+      <Container mt='72px'>
+        <Stack justify='space-between'>
+          <Photo url={defaultUrl} />
+          <Photo url={defaultUrl} />
+          <Photo url={defaultUrl} />
+        </Stack>
       </Container>
     </Container>
   );
