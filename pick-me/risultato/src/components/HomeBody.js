@@ -29,7 +29,7 @@ const HomeBody = () => {
 
       <Container mt='96px'>
         <Stack justify='space-between' align='end'>
-          <h4>Search your photos</h4>
+          <h4>search your photos</h4>
           <p
             style={{
               color: "var(--grey-700)",
