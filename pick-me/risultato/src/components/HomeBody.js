@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from "react";
-import { Container } from "./styled";
+import React, { useCallback } from "react";
+import { Button, Container } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../redux/reducers/api-reducer";
 const HomeBody = () => {
@@ -10,13 +10,19 @@ const HomeBody = () => {
 
   console.log("FROM COMPONENT", photos, error, loading, rate_limit);
 
-  const fetchLatestPhotos = useCallback(() => {
-    dispatch(fetchData("photos?per_page=5&page=3&order_by=latest"));
+  // const fetchLatestPhotos = useCallback(() => {
+  //   dispatch(fetchData("photos?per_page=5&page=3&order_by=latest"));
+  // }, [dispatch]);
+
+  const searchPhotos = useCallback(() => {
+    dispatch(fetchData("search/photos?query=react&per_page=5&page=1"));
   }, [dispatch]);
-  useEffect(() => fetchLatestPhotos(), [fetchLatestPhotos]);
+  // useEffect(() => fetchLatestPhotos(), [fetchLatestPhotos]);
   return (
     <Container>
-      <div>Ciao</div>
+      <Button variant='contained' size='md' onClick={searchPhotos}>
+        Cerca
+      </Button>
     </Container>
   );
 };
