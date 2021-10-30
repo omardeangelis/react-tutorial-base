@@ -2,7 +2,8 @@ import {
   space,
   layout,
   typography,
-  borderRadius,
+  color,
+  border,
   shadow,
   position,
   compose,
@@ -102,7 +103,7 @@ const StyledButton = styled("button")(
         transition: "all 250ms, transform 0.1s ease-in-out",
       },
     }),
-  compose(space, typography, position, shadow, borderRadius, layout)
+  compose(space, typography, color, position, shadow, border, layout)
 );
 
 const StyledContent = styled("div")({

@@ -3,6 +3,7 @@ import {
   layout,
   border,
   flexbox,
+  color,
   compose,
   position,
 } from "styled-system";
@@ -31,7 +32,7 @@ const StackWrapper = styled("div")(
         marginRight: childrenMarginRight,
       },
     }),
-  compose(flexbox, border, layout, space, position)
+  compose(flexbox, border, layout, color, space, position)
 );
 
 const Stack = ({
