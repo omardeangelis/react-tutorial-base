@@ -3,7 +3,8 @@ import { Box, Button, Container, InputWrapper, Stack } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../redux/reducers/api-reducer";
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
-import Photo from "./Photo";
+import PhotoSection from "./Photo-Section";
+import { rowalizer, generateUID } from "../utils/helpers";
 const HomeBody = () => {
   const dispatch = useDispatch();
   const { photos, error, loading, rate_limit } = useSelector(
@@ -12,14 +13,12 @@ const HomeBody = () => {
 
   console.log("FROM COMPONENT", photos, error, loading, rate_limit);
 
-  const defaultUrl = !loading && photos.results[0].urls.full;
-
   // const fetchLatestPhotos = useCallback(() => {
   //   dispatch(fetchData("photos?per_page=5&page=3&order_by=latest"));
   // }, [dispatch]);
 
   const searchPhotos = useCallback(() => {
-    dispatch(fetchData("search/photos?query=react&per_page=5&page=1"));
+    dispatch(fetchData("search/photos?query=react&per_page=12&page=1"));
   }, [dispatch]);
   // useEffect(() => fetchLatestPhotos(), [fetchLatestPhotos]);
   return (
@@ -38,7 +37,7 @@ const HomeBody = () => {
               color: "var(--grey-700)",
             }}
           >
-            Request 40/50
+            {`Request: ${rate_limit.remaining}/${rate_limit.total}`}
           </p>
         </Stack>
         <Box mt='24px'>
@@ -70,10 +69,23 @@ const HomeBody = () => {
       </Container>
 
       <Container mt='72px'>
-        <Stack justify='space-between'>
-          <Photo url={defaultUrl} />
-          <Photo url={defaultUrl} />
-          <Photo url={defaultUrl} />
+        <Stack direction='column' spacing='118px'>
+          {!loading && photos?.results?.length > 0 ? (
+            rowalizer(photos.results).map((row) => (
+              <PhotoSection row={row} key={generateUID()} />
+            ))
+          ) : (
+            <h3>Loading...</h3>
+          )}
+          <Stack justify='flex-end'>
+            <p
+              style={{
+                color: "var(--grey-700)",
+              }}
+            >
+              {`Item per page ${12}`}
+            </p>
+          </Stack>
         </Stack>
       </Container>
     </Container>

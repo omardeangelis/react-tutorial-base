@@ -23,7 +23,7 @@ const Card = styled(Box)`
   }
 `;
 
-const Photo = ({ url }) => {
+const Photo = ({ alt_description, color, urls: { full }, likes }) => {
   return (
     <Card
       maxWidth='367px'
@@ -36,8 +36,8 @@ const Photo = ({ url }) => {
         transform: "translateZ(0)",
       }}
     >
-      <Box width='100%' height='100%' bg='grey.500'>
-        <img src={url} alt='prova' width='100%' height='100%' />
+      <Box width='100%' height='100%' bg={color}>
+        <img src={full} alt={alt_description} width='100%' height='100%' />
       </Box>
       <Box
         className='card-action'
@@ -60,7 +60,7 @@ const Photo = ({ url }) => {
             }}
           >
             {" "}
-            77,99€
+            {likes}€
           </p>
           <Button
             variant={"text"}
