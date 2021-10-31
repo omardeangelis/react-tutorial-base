@@ -47,6 +47,22 @@ select {
   font-size: 16px;
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey-600);
+  height: 7px;
+  width: 7px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  height: 10px;
+}
+
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 48px;
