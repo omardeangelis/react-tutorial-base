@@ -72,6 +72,10 @@ export const fetchData = (path) => async (dispatch) => {
   try {
     const response = await instance.get(path);
     dispatch(saveData(response.data));
+    console.log(response);
+    if (response.data.total === 0) {
+      dispatch(catchError(["Nessun Elemento corrisponde alla ricerca"]));
+    }
     dispatch(
       checkRateLimiter({
         remaining: response.headers["x-ratelimit-remaining"],
@@ -79,7 +83,7 @@ export const fetchData = (path) => async (dispatch) => {
       })
     );
   } catch (error) {
-    dispatch(catchError(error));
+    dispatch(catchError(error.errors));
   }
   dispatch(stopLoading());
 };

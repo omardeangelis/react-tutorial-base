@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Container, InputWrapper, Stack } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, saveQuery } from "../redux/reducers/api-reducer";
@@ -22,8 +22,8 @@ const HomeBody = () => {
   const fetchPhotos = (type = "popular", page = 1) => {
     let apiUrl;
     if (type === "search") {
-      if (!query && query === " ") {
-        dispatch(catchError("Insert at least 1 characther"));
+      if (!query || query === " ") {
+        dispatch(catchError(["Insert at least 1 characther"]));
         return;
       }
       apiUrl = `search/photos?query=${query}&`;
@@ -46,7 +46,7 @@ const HomeBody = () => {
   };
 
   const handleChange = (e) => {
-    cleanError();
+    dispatch(cleanError());
     const { value } = e.target;
     setQuery(value);
   };
@@ -86,7 +86,7 @@ const HomeBody = () => {
             bg='grey.900'
             borderRadius='100px'
             border='1px solid'
-            borderColor='grey.700'
+            borderColor={error.status ? "error" : "grey.700"}
             px='18px'
             style={{
               overflowX: "hidden",
@@ -102,21 +102,39 @@ const HomeBody = () => {
             <Button
               rightIcon={<SearchIcon />}
               isLoading={false}
-              variant={"text"}
+              disabled={loading}
+              variant={error.status || loading ? "disabled" : "text"}
               iconColor='grey.700'
               bg='grey.900'
               onClick={searchPhoto}
             ></Button>
           </Stack>
+          {error.status && (
+            <Box mt='18px'>
+              <p className='error-message'>
+                {error?.message &&
+                  error.message.length > 0 &&
+                  error.message.join(" ")}
+              </p>
+            </Box>
+          )}
         </Box>
       </Container>
 
       <Container mt='72px'>
         <Stack direction='column' spacing='118px'>
-          {!loading && (photos?.length > 0 || photos?.results?.length > 0) ? (
+          {!loading &&
+          !error.status &&
+          (photos?.length > 0 || photos?.results?.length > 0) ? (
             rowalizer(photos?.results ? photos.results : photos).map((row) => (
               <PhotoSection row={row} key={generateUID()} />
             ))
+          ) : !loading && error.status ? (
+            <h3>
+              {error?.message && error.message.length > 0
+                ? error.message.join(" ")
+                : "Sorry, there was an Error. Try Again"}
+            </h3>
           ) : (
             <h3>Loading...</h3>
           )}

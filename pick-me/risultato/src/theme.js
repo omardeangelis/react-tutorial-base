@@ -2,6 +2,7 @@ const theme = {
   breakpoints: ["40em", "80em"],
   colors: {
     white: "#fff",
+    error: "#ff6966",
     purple: {
       300: "#f31caa",
       600: "#ad3eff",

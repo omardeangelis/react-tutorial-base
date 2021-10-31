@@ -15,6 +15,7 @@
   --grey-500: #b9b9b9;
   --purple-300: #f31caa;
   --purple-600: #ad3eff;
+  --error: #ff6966;
 }
 
 body {
@@ -39,6 +40,11 @@ select {
   color: var(--grey-700);
   background: transparent;
   border: none;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
