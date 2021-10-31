@@ -2,6 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import instance from "../../api";
 
 const initialState = {
+  query: {
+    path: "",
+    itemPerPage: null,
+    type: "",
+    query: "",
+  },
   loading: true,
   error: {
     status: false,
@@ -20,8 +26,6 @@ const photoSlice = createSlice({
   reducers: {
     startLoading: (state) => {
       state.loading = true;
-      state.error.status = true;
-      state.error.message = "";
       state.photos = {};
     },
     stopLoading: (state) => {
@@ -30,10 +34,17 @@ const photoSlice = createSlice({
     saveData: (state, action) => {
       state.photos = action.payload;
     },
+    saveQuery: (state, action) => {
+      state.query = { ...action.payload };
+    },
     catchError: (state, action) => {
       state.error.status = true;
       state.error.message = action.payload;
       state.photos = {};
+    },
+    cleanError: (state) => {
+      state.error.status = false;
+      state.error.message = "";
     },
     checkRateLimiter: (state, action) => {
       state.rate_limit = {
@@ -43,13 +54,21 @@ const photoSlice = createSlice({
   },
 });
 
-const { startLoading, stopLoading, saveData, catchError, checkRateLimiter } =
-  photoSlice.actions;
+const {
+  startLoading,
+  stopLoading,
+  saveData,
+  saveQuery,
+  catchError,
+  cleanError,
+  checkRateLimiter,
+} = photoSlice.actions;
 
 const { reducer } = photoSlice;
 
 export const fetchData = (path) => async (dispatch) => {
   dispatch(startLoading());
+  dispatch(cleanError());
   try {
     const response = await instance.get(path);
     dispatch(saveData(response.data));
@@ -64,5 +83,7 @@ export const fetchData = (path) => async (dispatch) => {
   }
   dispatch(stopLoading());
 };
+
+export { catchError, cleanError, saveQuery };
 
 export default reducer;

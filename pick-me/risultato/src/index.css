@@ -35,6 +35,12 @@ h4 {
   line-height: 56px;
 }
 
+select {
+  color: var(--grey-700);
+  background: transparent;
+  border: none;
+}
+
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 48px;
