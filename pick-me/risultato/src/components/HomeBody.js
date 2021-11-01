@@ -20,13 +20,9 @@ const HomeBody = () => {
     loading,
     rate_limit,
     query: lastSearch,
-    pagination,
   } = useSelector((state) => state.photos);
 
-  console.log(pagination);
-  console.log(error);
-
-  const [itemPerPage, setItemPerPage] = useState(12);
+  const [itemPerPage, setItemPerPage] = useState(lastSearch.itemPerPage || 12);
   const [query, setQuery] = useState(lastSearch.query || "");
 
   const fetchPhotos = (type = "popular", page = 1) => {
@@ -42,7 +38,6 @@ const HomeBody = () => {
     }
     dispatch(updatePage(page));
     dispatch(fetchData(`${apiUrl}per_page=${itemPerPage}&page=${page}`));
-    console.log("Page", page);
     dispatch(
       saveQuery({
         path: ` ${apiUrl}`.trim(),

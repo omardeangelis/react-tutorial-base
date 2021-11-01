@@ -20,7 +20,14 @@ const Header = () => {
               width='100%'
               height={["64px", "72px"]}
             >
-              <Logo />
+              <Link
+                to='/'
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                <Logo />
+              </Link>
               <Button variant='text'>
                 <Link
                   to='/checkout'
