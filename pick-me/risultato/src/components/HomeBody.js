@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchData, saveQuery } from "../redux/reducers/api-reducer";
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
 import PhotoSection from "./Photo-Section";
-import { rowalizer, generateUID } from "../utils/helpers";
+import { rowalizer } from "../utils/helpers";
 import { catchError, cleanError } from "../redux/reducers/api-reducer";
 const HomeBody = () => {
   const dispatch = useDispatch();
@@ -126,9 +126,9 @@ const HomeBody = () => {
           {!loading &&
           !error.status &&
           (photos?.length > 0 || photos?.results?.length > 0) ? (
-            rowalizer(photos?.results ? photos.results : photos).map((row) => (
-              <PhotoSection row={row} key={generateUID()} />
-            ))
+            rowalizer(photos?.results ? photos.results : photos).map(
+              (row, index) => <PhotoSection row={row} key={index} />
+            )
           ) : !loading && error.status ? (
             <h3>
               {error?.message && error.message.length > 0
