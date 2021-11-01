@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Container, InputWrapper, Stack } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData, saveQuery } from "../redux/reducers/api-reducer";
+import {
+  fetchData,
+  saveQuery,
+  updatePage,
+} from "../redux/reducers/api-reducer";
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
 import PhotoSection from "./Photo-Section";
 import { rowalizer } from "../utils/helpers";
 import { catchError, cleanError } from "../redux/reducers/api-reducer";
+import Paginator from "./Paginator";
+
 const HomeBody = () => {
   const dispatch = useDispatch();
   const {
@@ -16,8 +22,8 @@ const HomeBody = () => {
     query: lastSearch,
   } = useSelector((state) => state.photos);
 
-  const [itemPerPage, setItemPerPage] = useState(12);
-  const [query, setQuery] = useState("");
+  const [itemPerPage, setItemPerPage] = useState(lastSearch.itemPerPage || 12);
+  const [query, setQuery] = useState(lastSearch.query || "");
 
   const fetchPhotos = (type = "popular", page = 1) => {
     let apiUrl;
@@ -30,10 +36,11 @@ const HomeBody = () => {
     } else {
       apiUrl = "photos?";
     }
+    dispatch(updatePage(page));
     dispatch(fetchData(`${apiUrl}per_page=${itemPerPage}&page=${page}`));
     dispatch(
       saveQuery({
-        path: ` ${apiUrl}`,
+        path: ` ${apiUrl}`.trim(),
         itemPerPage,
         type,
         query,
@@ -106,7 +113,7 @@ const HomeBody = () => {
               variant={error.status || loading ? "disabled" : "text"}
               iconColor='grey.700'
               bg='grey.900'
-              onClick={searchPhoto}
+              onClick={() => searchPhoto()}
             ></Button>
           </Stack>
           {error.status && (
@@ -161,6 +168,7 @@ const HomeBody = () => {
           </Stack>
         </Stack>
       </Container>
+      {lastSearch.type === "search" && <Paginator />}
     </Container>
   );
 };
