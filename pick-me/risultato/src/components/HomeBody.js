@@ -118,7 +118,7 @@ const HomeBody = () => {
               variant={error.status || loading ? "disabled" : "text"}
               iconColor='grey.700'
               bg='grey.900'
-              onClick={() => searchPhoto(834)}
+              onClick={() => searchPhoto()}
             ></Button>
           </Stack>
           {error.status && (
