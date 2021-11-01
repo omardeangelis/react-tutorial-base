@@ -140,7 +140,7 @@ const Button = ({
     >
       <StyledContent>
         {!isLoading && leftIcon && (
-          <ButtonIcon mr='6px'> {rightIcon} </ButtonIcon>
+          <ButtonIcon mr='6px'> {leftIcon} </ButtonIcon>
         )}
 
         {children}
