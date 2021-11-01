@@ -23,7 +23,11 @@ const Paginator = () => {
         <Stack justify={definePaginatorFlex()} align='center' width='100%'>
           {hasPrevPage && (
             <Link
-              to={currentPage === 2 ? "/" : `/photos/${currentPage - 1}`}
+              to={
+                parseInt(currentPage, 10) === 2
+                  ? "/"
+                  : `/photo/${parseInt(currentPage, 10) - 1}`
+              }
               style={{
                 textDecoration: "none",
               }}
@@ -41,7 +45,7 @@ const Paginator = () => {
 
           {hasNextPage && (
             <Link
-              to={`/photos/${currentPage + 1}`}
+              to={`/photo/${parseInt(currentPage, 10) + 1}`}
               style={{
                 textDecoration: "none",
               }}

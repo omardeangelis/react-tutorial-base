@@ -27,7 +27,7 @@ const HomeBody = () => {
   console.log(error);
 
   const [itemPerPage, setItemPerPage] = useState(12);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(lastSearch.query || "");
 
   const fetchPhotos = (type = "popular", page = 1) => {
     let apiUrl;
@@ -45,7 +45,7 @@ const HomeBody = () => {
     console.log("Page", page);
     dispatch(
       saveQuery({
-        path: ` ${apiUrl}`,
+        path: ` ${apiUrl}`.trim(),
         itemPerPage,
         type,
         query,
