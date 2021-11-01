@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Button, Stack } from "./styled";
+import React, { useState } from "react";
+import { Box, Button, Skeleton, Stack } from "./styled";
 import { ReactComponent as ColoredCart } from "../images/purple-cart.svg";
 import styled from "styled-components";
 
@@ -24,6 +24,7 @@ const Card = styled(Box)`
 `;
 
 const Photo = ({ alt_description, color, urls: { full }, likes }) => {
+  const [load, setLoad] = useState(false);
   return (
     <Card
       maxWidth='367px'
@@ -37,7 +38,23 @@ const Photo = ({ alt_description, color, urls: { full }, likes }) => {
       }}
     >
       <Box width='100%' height='100%' bg={color}>
-        <img src={full} alt={alt_description} width='100%' height='100%' />
+        <img
+          src={full}
+          alt={alt_description}
+          width='100%'
+          height='100%'
+          onLoad={() => setLoad(true)}
+          style={{
+            display: load ? "block" : "none",
+          }}
+        />
+        <Skeleton
+          width='100%'
+          height='100%'
+          style={{
+            display: load ? "none" : "block",
+          }}
+        />
       </Box>
       <Box
         className='card-action'
