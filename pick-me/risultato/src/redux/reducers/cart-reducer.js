@@ -1,11 +1,23 @@
-import { createSlice, createAction } from "@reduxjs/toolkit";
+import { createSlice, createAction, isAnyOf } from "@reduxjs/toolkit";
+import { setLocalStorageItem } from "../../utils/helpers";
 
 const isAddToCartAction = (action) => {
   return action.type.endsWith("/addToCart");
 };
 
+const isCartCleaned = (action) => {
+  return action.type.endsWith("/cleanCart");
+};
+
+const isRemovedFromCard = (action) => {
+  return action.type.endsWith("remove-from-cart");
+};
+
+const isCartAction = (action) => {
+  return isAnyOf(isAddToCartAction, isRemovedFromCard, isCartCleaned)(action);
+};
+
 const removeFromCart = createAction("remove-from-cart");
-const calcualteTotal = createAction("find-total");
 
 const initialValue = {
   cart: [],
@@ -30,11 +42,15 @@ export const cartSlice = createSlice({
       .addCase(removeFromCart, (state, action) => {
         state.cart = state.cart.filter((el) => el.id !== action.payload);
       })
-      .addCase(calcualteTotal, (state, action) => {
-        state.total = action.payload;
-      })
       .addMatcher(isAddToCartAction, (state, action) => {
         state.total += action.payload.likes;
+      })
+      .addMatcher(isRemovedFromCard, (state, action) => {
+        state.total -= action.payload.likes;
+      })
+      .addMatcher(isCartAction, (state) => {
+        setLocalStorageItem("cart", state.cart);
+        setLocalStorageItem("total", state.total);
       })
       .addDefaultCase((state) => {
         return state;
@@ -45,13 +61,5 @@ export const cartSlice = createSlice({
 export const { cleanCart, addToCart } = cartSlice.actions;
 
 export { removeFromCart };
-
-export const findCartTotal = () => (dispatch, getState) => {
-  let cartPrice = getState().cart.cart.reduce((total, item) => {
-    return total + item.likes;
-  }, 0);
-
-  dispatch({ type: calcualteTotal, payload: cartPrice });
-};
 
 export default cartSlice.reducer;
