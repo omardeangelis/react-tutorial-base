@@ -4,7 +4,7 @@ import { Container, Stack, Box } from "./styled";
 
 const Footer = () => {
   return (
-    <Container size='fullwidth' mt={["24px", "72px"]}>
+    <Container size='fullwidth' mt={["24px", "72px"]} pb='72px'>
       <Container>
         <Stack width='100%' justify='flex-start'>
           <Stack align='start' spacing='20px'>
