@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Skeleton, Stack } from "./styled";
 import { ReactComponent as ColoredCart } from "../images/purple-cart.svg";
 import styled from "styled-components";
-import { addToCart } from "../redux/reducers/cart-reducer";
+import { addSingleElementToCart } from "../redux/reducers/cart-reducer";
 import { useDispatch } from "react-redux";
 
 const Card = styled(Box)`
@@ -86,7 +86,7 @@ const Photo = ({ alt_description, color, urls: { full }, likes, id }) => {
           <Button
             onClick={() =>
               dispatch(
-                addToCart({
+                addSingleElementToCart({
                   id,
                   url: full,
                   likes,

@@ -9,9 +9,11 @@ import {
 } from "../components/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBack2Fill } from "react-icons/ri";
+import { removeFromCart, cleanCart } from "../redux/reducers/cart-reducer";
 
 const CheckoutScreen = (props) => {
   const { cart, total } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   return (
     <Layout>
       <Container size='fullwidth' mb='118px'>
@@ -21,6 +23,11 @@ const CheckoutScreen = (props) => {
           </Box>
           <Stack justify='space-between' spacing='64px' align='start' mt='72px'>
             <Stack direction='column' spacing='48px' flex='1 1 auto'>
+              <Stack justify='flex-end' onClick={() => dispatch(cleanCart())}>
+                <Button variant='text' size='sm'>
+                  Remove all
+                </Button>
+              </Stack>
               {cart && cart.length > 0 ? (
                 cart.map((item) => {
                   return (
@@ -74,6 +81,9 @@ const CheckoutScreen = (props) => {
                           variant='text'
                           size='md'
                           iconColor='purple.300'
+                          onClick={() => {
+                            dispatch(removeFromCart(item));
+                          }}
                           rightIcon={<RiDeleteBack2Fill size={24} />}
                         ></Button>
                       </Stack>
@@ -110,7 +120,8 @@ const CheckoutScreen = (props) => {
                     <InputWrapper width='100px' placeholder='Numero' />
                     <InputWrapper width='100px' placeholder='CAP' />
                   </Stack>
-                  <Stack justify='flex-end'>
+                  <Stack justify='space-between' align='center'>
+                    <h2>{total} €</h2>
                     <Button type='submit' variant='contained' size='md'>
                       Procedi all'acquisto
                     </Button>
