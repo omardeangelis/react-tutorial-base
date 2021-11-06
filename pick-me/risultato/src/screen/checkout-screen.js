@@ -10,8 +10,48 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { removeFromCart, cleanCart } from "../redux/reducers/cart-reducer";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
-const CheckoutScreen = (props) => {
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .max(75, "Can not have more then 75 characters")
+    .min(2, "Please insert at least 2 charcater")
+    .required("You must provide a name"),
+  cognome: Yup.string()
+    .max(100, "Can not have more then 100 characters")
+    .min(2, "Please insert at least 2 charcater")
+    .required("You must provide a surname"),
+  card: Yup.string()
+    .max(25, "Card Must have 25 number")
+    .min(25, "Card must have 25 number")
+    .required(),
+  address: Yup.string()
+    .max(75, "Can not have more then 75 characters")
+    .min(2, "Please insert at least 2 charcater")
+    .required("You must provide a valid address"),
+
+  civico: Yup.number()
+    .max(10000, "Can't be greater than 10.000, 00")
+    .positive("You can't provide negative number")
+    .moreThan(0, "0 is not allowed")
+    .required("Insert Civico"),
+  cap: Yup.string()
+    .max(10, "Allowed Max 10 char")
+    .min(3, "Insert at least 3 char")
+    .required("You must provide a valid address"),
+});
+
+const initialValues = {
+  name: "",
+  cognome: "",
+  card: "",
+  address: "",
+  civico: "",
+  cap: "",
+};
+
+const CheckoutScreen = () => {
   const { cart, total } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
@@ -108,26 +148,236 @@ const CheckoutScreen = (props) => {
                 <h3>Dati di pagamento</h3>
               </Box>
 
-              <form>
-                <Stack direction='column' spacing='36px'>
-                  <Stack justify='space-between' align='center'>
-                    <InputWrapper width='200px' placeholder='nome' />
-                    <InputWrapper width='200px' placeholder='cognome' />
-                  </Stack>
-                  <InputWrapper placeholder='carta di credito' />
-                  <Stack spacing='10px' align='center'>
-                    <InputWrapper width='238px' placeholder='Indirizzo' />
-                    <InputWrapper width='100px' placeholder='Numero' />
-                    <InputWrapper width='100px' placeholder='CAP' />
-                  </Stack>
-                  <Stack justify='space-between' align='center'>
-                    <h2>{total} €</h2>
-                    <Button type='submit' variant='contained' size='md'>
-                      Procedi all'acquisto
-                    </Button>
-                  </Stack>
-                </Stack>
-              </form>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={(values, { setSubmitting }) => {
+                  setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                  }, 400);
+                }}
+              >
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isSubmitting,
+                  isValid,
+                  dirty,
+                }) => (
+                  <form onSubmit={handleSubmit}>
+                    <Stack direction='column' spacing='36px'>
+                      <Stack justify='space-between' align='center'>
+                        <Box>
+                          <InputWrapper
+                            onChange={handleChange}
+                            value={values.name}
+                            width='200px'
+                            name='name'
+                            onBlur={handleBlur}
+                            borderColor={
+                              errors.name ? "var(--error)" : "initial"
+                            }
+                            placeholder='nome'
+                          />
+                          {touched.name && errors.name ? (
+                            <p
+                              style={{
+                                color: "var(--error)",
+                                marginTop: "6px",
+                                fontSize: "8px",
+                                textAlign: "right",
+                              }}
+                            >
+                              {errors.name}
+                            </p>
+                          ) : (
+                            <div
+                              style={{
+                                height: "8px",
+                              }}
+                            ></div>
+                          )}
+                        </Box>
+                        <Box>
+                          <InputWrapper
+                            onChange={handleChange}
+                            value={values.cognome}
+                            width='200px'
+                            name='cognome'
+                            placeholder='cognome'
+                            borderColor={
+                              errors.cognome ? "var(--error)" : "initial"
+                            }
+                            onBlur={handleBlur}
+                          />
+                          {touched.cognome && errors.cognome ? (
+                            <p
+                              style={{
+                                color: "var(--error)",
+                                marginTop: "6px",
+                                fontSize: "8px",
+                                textAlign: "right",
+                              }}
+                            >
+                              {errors.cognome}
+                            </p>
+                          ) : (
+                            <div
+                              style={{
+                                height: "8px",
+                              }}
+                            ></div>
+                          )}
+                        </Box>
+                      </Stack>
+                      <Box width='100%'>
+                        <InputWrapper
+                          width='100%'
+                          onChange={handleChange}
+                          value={values.card}
+                          placeholder='carta di credito'
+                          borderColor={errors.card ? "var(--error)" : "initial"}
+                          name='card'
+                          onBlur={handleBlur}
+                        />
+                        {touched.card && errors.card ? (
+                          <p
+                            style={{
+                              color: "var(--error)",
+                              marginTop: "6px",
+                              fontSize: "8px",
+                              textAlign: "right",
+                            }}
+                          >
+                            {errors.card}
+                          </p>
+                        ) : (
+                          <div
+                            style={{
+                              height: "8px",
+                            }}
+                          ></div>
+                        )}
+                      </Box>
+                      <Stack spacing='10px' align='center'>
+                        <Box>
+                          <InputWrapper
+                            onChange={handleChange}
+                            value={values.address}
+                            width='238px'
+                            name='address'
+                            placeholder='Indirizzo'
+                            borderColor={
+                              errors.address ? "var(--error)" : "initial"
+                            }
+                            onBlur={handleBlur}
+                          />
+                          {touched.address && errors.address ? (
+                            <p
+                              style={{
+                                color: "var(--error)",
+                                marginTop: "6px",
+                                fontSize: "8px",
+                                textAlign: "right",
+                              }}
+                            >
+                              {errors.address}
+                            </p>
+                          ) : (
+                            <div
+                              style={{
+                                height: "8px",
+                              }}
+                            ></div>
+                          )}
+                        </Box>
+                        <Box>
+                          <InputWrapper
+                            onChange={handleChange}
+                            value={values.civico}
+                            width='100px'
+                            name='civico'
+                            placeholder='Numero'
+                            borderColor={
+                              errors.civico ? "var(--error)" : "initial"
+                            }
+                            onBlur={handleBlur}
+                          />
+                          {touched.civico && errors.civico ? (
+                            <p
+                              style={{
+                                color: "var(--error)",
+                                marginTop: "6px",
+                                fontSize: "8px",
+                                textAlign: "right",
+                              }}
+                            >
+                              {errors.civico}
+                            </p>
+                          ) : (
+                            <div
+                              style={{
+                                height: "8px",
+                              }}
+                            ></div>
+                          )}
+                        </Box>
+                        <Box>
+                          <InputWrapper
+                            onChange={handleChange}
+                            value={values.cap}
+                            width='100px'
+                            name='cap'
+                            placeholder='CAP'
+                            borderColor={
+                              errors.name ? "var(--error)" : "initial"
+                            }
+                            onBlur={handleBlur}
+                          />
+                          {touched.cap && errors.cap ? (
+                            <p
+                              style={{
+                                color: "var(--error)",
+                                marginTop: "6px",
+                                fontSize: "8px",
+                                textAlign: "right",
+                              }}
+                            >
+                              {errors.cap}
+                            </p>
+                          ) : (
+                            <div
+                              style={{
+                                height: "8px",
+                              }}
+                            ></div>
+                          )}
+                        </Box>
+                      </Stack>
+                      <Stack justify='space-between' align='center'>
+                        <h2>{total} €</h2>
+                        <Button
+                          type='submit'
+                          variant={
+                            isSubmitting || !isValid || !dirty
+                              ? "disabled"
+                              : "contained"
+                          }
+                          size='md'
+                          disabled={isSubmitting}
+                        >
+                          Procedi all'acquisto
+                        </Button>
+                      </Stack>
+                    </Stack>
+                  </form>
+                )}
+              </Formik>
             </Box>
           </Stack>
         </Container>
