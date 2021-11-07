@@ -155,7 +155,7 @@ const CheckoutScreen = () => {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={({ setSubmitting }) => {
+                onSubmit={(values, { setSubmitting }) => {
                   setTimeout(() => {
                     dispatch(payOrder());
                     setSubmitting(false);
