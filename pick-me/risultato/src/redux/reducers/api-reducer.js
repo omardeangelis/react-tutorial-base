@@ -1,12 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import instance from "../../api";
+import {
+  getItemFromLocalStorage,
+  setLocalStorageItem,
+} from "../../utils/helpers";
+
+const path = getItemFromLocalStorage("query")?.path || "";
+const itemPerPage = getItemFromLocalStorage("query")?.itemPerPage || null;
+const type = getItemFromLocalStorage("query")?.type || "";
+const query = getItemFromLocalStorage("query")?.query || "";
 
 const initialState = {
   query: {
-    path: "",
-    itemPerPage: null,
-    type: "",
-    query: "",
+    path: path || "",
+    itemPerPage: itemPerPage || null,
+    type: type || "",
+    query: query || "",
   },
   loading: true,
   error: {
@@ -24,6 +33,10 @@ const initialState = {
     hasNextPage: false,
     hasPrevPage: false,
   },
+};
+
+const isQuerySaved = (action) => {
+  return action.type.endsWith("/saveQuery");
 };
 
 const photoSlice = createSlice({
@@ -67,6 +80,11 @@ const photoSlice = createSlice({
       };
     },
   },
+  extraReducers: (builder) => {
+    builder.addMatcher(isQuerySaved, (state) => {
+      setLocalStorageItem("query", state.query);
+    });
+  },
 });
 
 const {
@@ -89,7 +107,6 @@ export const fetchData = (path) => async (dispatch, getState) => {
   try {
     const response = await instance.get(path);
     dispatch(saveData(response.data));
-    console.log(response);
     if (response?.data?.total === 0) {
       dispatch(catchError(["Nessun Elemento corrisponde alla ricerca"]));
     }
@@ -110,7 +127,6 @@ export const fetchData = (path) => async (dispatch, getState) => {
       })
     );
   } catch (error) {
-    console.log("FROM REDUX", error);
     dispatch(catchError(error.errors));
   }
   dispatch(stopLoading());

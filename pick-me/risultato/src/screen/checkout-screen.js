@@ -9,7 +9,11 @@ import {
 } from "../components/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBack2Fill } from "react-icons/ri";
-import { removeFromCart, cleanCart } from "../redux/reducers/cart-reducer";
+import {
+  removeFromCart,
+  cleanCart,
+  payOrder,
+} from "../redux/reducers/cart-reducer";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -151,9 +155,9 @@ const CheckoutScreen = () => {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={({ setSubmitting }) => {
                   setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
+                    dispatch(payOrder());
                     setSubmitting(false);
                   }, 400);
                 }}
