@@ -63,6 +63,19 @@ select {
   height: 10px;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--grey-900) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--grey-900) inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--grey-700) !important;
+  border-color: var(--grey-700);
+}
+
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 48px;

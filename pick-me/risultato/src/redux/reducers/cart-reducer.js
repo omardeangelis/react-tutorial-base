@@ -42,6 +42,9 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       state.cart.push(action.payload);
     },
+    payOrder: (state) => {
+      state.payed = true;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -74,7 +77,7 @@ const addSingleElementToCart = (item) => (dispatch, getState) => {
   dispatch(addToCart(item));
 };
 
-export const { cleanCart, addToCart } = cartSlice.actions;
+export const { cleanCart, addToCart, payOrder } = cartSlice.actions;
 
 export { removeFromCart, addSingleElementToCart };
 
