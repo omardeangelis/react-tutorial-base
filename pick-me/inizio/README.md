@@ -1,5 +1,8 @@
 ## Pick Me - Redux
 
+Link al progetto Finale:
+https://redux-pick-me.netlify.app/
+
 Costruiamo una liberaria di foto grazie all'API di UNSPLASH e aggiungiamoci un bel carrello ed un checkout e gestiamo tutti i nostri state con redux/toolkit
 
 In questo progetto utilizzeremo diverse liberie:
