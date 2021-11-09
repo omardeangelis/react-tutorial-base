@@ -1,0 +1,91 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --grey-900: #0e0e0e;
+  --grey-800: #121212;
+  --grey-700: #6c6767;
+  --grey-600: #898989;
+  --grey-500: #b9b9b9;
+  --purple-300: #f31caa;
+  --purple-600: #ad3eff;
+  --error: #ff6966;
+}
+
+body {
+  background-color: var(--grey-800);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 78px;
+}
+
+h4 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+}
+
+select {
+  color: var(--grey-700);
+  background: transparent;
+  border: none;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 16px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey-600);
+  height: 7px;
+  width: 7px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  height: 10px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--grey-900) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--grey-900) inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--grey-700) !important;
+  border-color: var(--grey-700);
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+  }
+
+  h4 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+}
