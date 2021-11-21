@@ -135,7 +135,7 @@ const Button = ({
   return (
     <StyledButton
       disabled={isLoading}
-      variant={isLoading ? "disbled" : variant || "contained"}
+      variant={isLoading ? "disabled" : variant || "contained"}
       {...rest}
     >
       <StyledContent>
