@@ -22,6 +22,10 @@ Utilissima libreria che ci permette di gestire, validare e submittare i nostri f
 Yup: https://github.com/jquense/yup
 Permette di creare degli schemi di validazione avanzati
 
+Reach Router:
+Router utilizzato nel progetto
+https://reach.tech/router/
+
 ### API
 
 Unsplash: https://unsplash.com/developers
