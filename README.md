@@ -51,3 +51,7 @@ Contiene il progetto completo:
 #### Dopo aver concluso la visione di tutte le puntate di teoria Base
 
 10. cocktail: https://wiki-drink.netlify.app/
+
+#### Redux: Dopo aver completato almeno il progetto 8 e 9
+
+11. pick.me: https://redux-pick-me.netlify.app/
