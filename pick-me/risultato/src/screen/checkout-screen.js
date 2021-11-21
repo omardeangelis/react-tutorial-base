@@ -67,8 +67,12 @@ const CheckoutScreen = () => {
           </Box>
           <Stack justify='space-between' spacing='64px' align='start' mt='72px'>
             <Stack direction='column' spacing='48px' flex='1 1 auto'>
-              <Stack justify='flex-end' onClick={() => dispatch(cleanCart())}>
-                <Button variant='text' size='sm'>
+              <Stack justify='flex-end'>
+                <Button
+                  variant='text'
+                  size='sm'
+                  onClick={() => dispatch(cleanCart())}
+                >
                   Remove all
                 </Button>
               </Stack>
