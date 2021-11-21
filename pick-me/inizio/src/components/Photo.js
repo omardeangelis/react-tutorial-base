@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+// import { Box, Button, Skeleton, Stack } from "./styled";
+import { ReactComponent as ColoredCart } from "../images/purple-cart.svg";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
-const Photo = ({ alt_description, color, urls: { full }, likes, id }) => {
+const Photo = () => {
   return <>Photo</>;
 };
 
