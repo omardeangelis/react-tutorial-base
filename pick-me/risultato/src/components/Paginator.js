@@ -3,7 +3,7 @@ import { Button, Container, Stack } from "./styled";
 import { ReactComponent as LeftIcon } from "../images/left-arrow.svg";
 import { ReactComponent as RightIcon } from "../images/small-right-arrow.svg";
 import { useSelector } from "react-redux";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 const Paginator = () => {
   const { currentPage, hasNextPage, hasPrevPage } = useSelector(
     (state) => state.photos.pagination

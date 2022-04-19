@@ -10,7 +10,7 @@ import {
   saveQuery,
   updatePage,
 } from "../redux/reducers/api-reducer";
-import { useParams } from "@reach/router";
+import { useParams } from "react-router-dom";
 
 const PaginatedScreen = () => {
   const { page } = useParams();
