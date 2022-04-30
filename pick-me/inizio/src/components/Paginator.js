@@ -3,7 +3,7 @@ import React from "react";
 import { ReactComponent as LeftIcon } from "../images/left-arrow.svg";
 import { ReactComponent as RightIcon } from "../images/small-right-arrow.svg";
 import { useSelector } from "react-redux";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 
 const Paginator = () => {
   return <>Paginator</>;

@@ -5,7 +5,7 @@ import PhotoSection from "../components/Photo-Section";
 import Paginator from "../components/Paginator";
 // import { Container, Stack } from "../components/styled";
 // import { rowalizer } from "../utils/helpers";
-import { useParams } from "@reach/router";
+import { useParams } from "react-router-dom";
 
 const PaginatedScreen = () => {
   return (
