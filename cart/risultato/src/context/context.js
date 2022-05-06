@@ -19,7 +19,7 @@ import {
 const AppContext = React.createContext();
 
 //URL per le chiamate all API
-const url = "https://react-corso-api.netlify.app/.netlify/functions/cartshop";
+const url = "https://react--course-api.herokuapp.com/api/v1/data/cart";
 
 //Stato iniziale del nostro Reducer
 const initialState = {
@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
         const response = await axios.get(url);
         dispatch({
           type: DATA_FETCHING_SUCCESS,
-          payload: response.data.default,
+          payload: response.data.data,
         });
       } catch (err) {
         dispatch({ type: DATA_FETCHING_FAILED });
