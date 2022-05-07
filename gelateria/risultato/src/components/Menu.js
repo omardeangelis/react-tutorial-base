@@ -3,7 +3,7 @@ import Gelato from "./Gelato";
 import axios from "axios";
 // import data from "../fakeData";
 
-const url = "https://react-corso-api.netlify.app/.netlify/functions/gelateria";
+const url = "https://react--course-api.herokuapp.com/api/v1/data/gelateria";
 
 const Menu = () => {
   //Settaggio di State
@@ -55,12 +55,12 @@ const Menu = () => {
       setIsError(false);
       try {
         const response = await axios.get(url);
-        setProdotti(response.data.data.default);
-        setFilterProducts(response.data.data.default);
+        setProdotti(response.data.data);
+        setFilterProducts(response.data.data);
 
         //Ottengo Array di elementi non ripetibili
         const nuoveCategorie = Array.from(
-          new Set(response.data.data.default.map((el) => el.categoria))
+          new Set(response.data.data.map((el) => el.categoria))
         );
 
         //Aggiungo all'inizio termine all
