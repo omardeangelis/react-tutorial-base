@@ -43,13 +43,16 @@ const Slider = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
   return (
-    <div className="container slider">
+    <div className='container slider'>
       {recensioni.map((recensione, index) => {
         //Cambio classe in base alla posizione dell'elemento rispetto a quello attivo
         let positionClass = "";
         if (index === active) {
           positionClass = "active";
-        } else if (active === index + 1 || index === recensioni.length - 1) {
+        } else if (
+          active === index + 1 ||
+          (active === 0 && index === recensioni.length - 1)
+        ) {
           positionClass = "prev";
         } else {
           positionClass = "next";
@@ -58,11 +61,11 @@ const Slider = () => {
           <Slide key={recensione.id} {...recensione} classes={positionClass} />
         );
       })}
-      <div className="btn-group slider-btn-group">
-        <button className="btn btn-slider prev-slide" onClick={precedenteSlide}>
+      <div className='btn-group slider-btn-group'>
+        <button className='btn btn-slider prev-slide' onClick={precedenteSlide}>
           prev
         </button>
-        <button className="btn btn-slider next-slide" onClick={prossimaSlide}>
+        <button className='btn btn-slider next-slide' onClick={prossimaSlide}>
           next
         </button>
       </div>
